@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-07T02:38:28.000Z</updated>
+  <updated>2016-11-27T13:18:28.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2016/11/06/algs4-Percolation/"/>
     <id>http://yoursite.com/2016/11/06/algs4-Percolation/</id>
     <published>2016-11-06T13:22:13.000Z</published>
-    <updated>2016-11-07T02:38:28.000Z</updated>
+    <updated>2016-11-27T13:18:28.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>原题目：<a href="http://coursera.cs.princeton.edu/algs4/assignments/percolation.html" target="_blank" rel="external">http://coursera.cs.princeton.edu/algs4/assignments/percolation.html</a></p>
-<p><code>percolate</code> 渗透，扩散<br>给定一个正方形的图，图上每个点(site)的状态初始为非open，即下图中的黑色部分，现在<strong>随机</strong>逐个打开其中的某些site，使之转变为open状态，判断上下是否联通，即相当于从图上方灌水，问是否能渗透到最底下。<br><img src="http://coursera.cs.princeton.edu/algs4/assignments/percolates.png" alt="percolates"><br>现在把能够渗透的状态称为<code>percolate</code><br>若要表示<code>图percolate的概率</code>和<code>单个点open的概率</code>的关系，可以用以下的曲线图表示：<br><img src="http://coursera.cs.princeton.edu/algs4/assignments/percolation-threshold20.png" alt=""><br>左边的是20x20的图，右边是100x100的矩阵。<br>要完成的任务<code>Percolation.java</code>如下：</p>
+<p><code>percolate</code> 渗透，扩散<br>给定一个正方形的图，图上每个点(site)的状态初始为非open，即下图中的黑色部分，现在<strong>随机</strong>逐个打开其中的某些site，使之转变为open状态，判断上下是否联通，即相当于从图上方灌水，问是否能渗透到最底下。<br><img src="http://coursera.cs.princeton.edu/algs4/assignments/percolates.png" alt="percolates"><br>现在把能够渗透的状态称为<code>percolate</code><br>若要表示<code>图percolate的概率</code>和<code>单个点open的概率</code>的关系，可以用以下的曲线图表示：<br><img src="http://coursera.cs.princeton.edu/algs4/assignments/percolation-threshold20.png" alt=""><br>左边的是20x20的图，右边是100x100的矩阵。<br><a id="more"></a><br>要完成的任务<code>Percolation.java</code>如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Percolation</span> </span>&#123;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Percolation</span><span class="params">(<span class="keyword">int</span> n)</span>                <span class="comment">// create n-by-n grid, with all sites blocked</span></span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span>       <span class="comment">// open site (row, col) if it is not open already</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOpen</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span>  <span class="comment">// is site (row, col) open?</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span>  <span class="comment">// is site (row, col) full?</span></div><div class="line">   <span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">percolates</span><span class="params">()</span>              <span class="comment">// does the system percolate?</span></div><div class="line"></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>   <span class="comment">// test client (optional)</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>具体要求参见原题。</p>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="如何将二维图投射到一维"><a href="#如何将二维图投射到一维" class="headerlink" title="如何将二维图投射到一维"></a>如何将二维图投射到一维</h4><p>so easy！</p>
@@ -43,7 +43,8 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;题意&quot;&gt;&lt;a href=&quot;#题意&quot; class=&quot;headerlink&quot; title=&quot;题意&quot;&gt;&lt;/a&gt;题意&lt;/h3&gt;&lt;p&gt;原题目：&lt;a href=&quot;http://coursera.cs.princeton.edu/algs4/assignments/percol
+      &lt;h3 id=&quot;题意&quot;&gt;&lt;a href=&quot;#题意&quot; class=&quot;headerlink&quot; title=&quot;题意&quot;&gt;&lt;/a&gt;题意&lt;/h3&gt;&lt;p&gt;原题目：&lt;a href=&quot;http://coursera.cs.princeton.edu/algs4/assignments/percolation.html&quot;&gt;http://coursera.cs.princeton.edu/algs4/assignments/percolation.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;percolate&lt;/code&gt; 渗透，扩散&lt;br&gt;给定一个正方形的图，图上每个点(site)的状态初始为非open，即下图中的黑色部分，现在&lt;strong&gt;随机&lt;/strong&gt;逐个打开其中的某些site，使之转变为open状态，判断上下是否联通，即相当于从图上方灌水，问是否能渗透到最底下。&lt;br&gt;&lt;img src=&quot;http://coursera.cs.princeton.edu/algs4/assignments/percolates.png&quot; alt=&quot;percolates&quot;&gt;&lt;br&gt;现在把能够渗透的状态称为&lt;code&gt;percolate&lt;/code&gt;&lt;br&gt;若要表示&lt;code&gt;图percolate的概率&lt;/code&gt;和&lt;code&gt;单个点open的概率&lt;/code&gt;的关系，可以用以下的曲线图表示：&lt;br&gt;&lt;img src=&quot;http://coursera.cs.princeton.edu/algs4/assignments/percolation-threshold20.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;左边的是20x20的图，右边是100x100的矩阵。&lt;br&gt;
     
     </summary>
     
@@ -55,10 +56,11 @@
     <link href="http://yoursite.com/2016/10/03/key-cyan/"/>
     <id>http://yoursite.com/2016/10/03/key-cyan/</id>
     <published>2016-10-03T04:53:19.000Z</published>
-    <updated>2016-10-03T05:59:04.000Z</updated>
+    <updated>2016-11-27T13:18:17.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="A-A-B练习"><a href="#A-A-B练习" class="headerlink" title="A. A+B练习"></a>A. A+B练习</h2><p>简单输入输出练习。<br>输出答案用空行分开，但是最后一行的换行符不能省略，否则会出现迷之PE。</p>
-<h5 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> n, a;</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; T;</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (n--) &#123;</div><div class="line">            <span class="built_in">cin</span> &gt;&gt; a;</div><div class="line">            sum += a;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">if</span> (T &gt; <span class="number">0</span>) <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h5><a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> n, a;</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; T;</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (n--) &#123;</div><div class="line">            <span class="built_in">cin</span> &gt;&gt; a;</div><div class="line">            sum += a;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">if</span> (T &gt; <span class="number">0</span>) <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><br></p>
 <h2 id="B-出现次数最多的数"><a href="#B-出现次数最多的数" class="headerlink" title="B. 出现次数最多的数"></a>B. 出现次数最多的数</h2><h5 id="题意简述："><a href="#题意简述：" class="headerlink" title="题意简述："></a>题意简述：</h5><p>给定n个正整数(si)，找出它们中出现次数最多的数。如果这样的数有多个，请输出其中最小的一个。<br>本题数据范围较小，1 ≤ n ≤ 1000 ，1 ≤ si ≤ 10000。<br>解法也有很多，以下给出一个较简单的办法：<br>用一个10000大小的数组表示各个数的出现次数，对于每次输入，将对应的数的出现次数+1，同时记录出现过的数，用以之后的比较。</p>
 <h5 id="AC代码：-1"><a href="#AC代码：-1" class="headerlink" title="AC代码："></a>AC代码：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> hs[<span class="number">10010</span>]; <span class="comment">//例如hs[30] == 4, 表示值为30的数有4个</span></div><div class="line"><span class="keyword">int</span> num[<span class="number">1010</span>]; <span class="comment">//记录输入的数</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> n, t, maxcount, cnt, ans;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n) &#123;</div><div class="line">        maxcount = <span class="number">-1</span>; <span class="comment">//最多的出现次数</span></div><div class="line">        ans = <span class="number">0x7f7f7f7f</span>; <span class="comment">//出现次数最多的数</span></div><div class="line">        <span class="built_in">memset</span>(hs, <span class="number">0</span>, <span class="keyword">sizeof</span>(hs));</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            <span class="built_in">cin</span> &gt;&gt; t;</div><div class="line">            num[i] = t;</div><div class="line">            hs[t]++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            cnt = hs[num[i]];</div><div class="line">            <span class="keyword">if</span> (cnt &gt; maxcount || (cnt == maxcount &amp;&amp; ans &gt; num[i])) &#123;</div><div class="line">                maxcount = cnt;</div><div class="line">                ans = num[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -165,7 +167,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;A-A-B练习&quot;&gt;&lt;a href=&quot;#A-A-B练习&quot; class=&quot;headerlink&quot; title=&quot;A. A+B练习&quot;&gt;&lt;/a&gt;A. A+B练习&lt;/h2&gt;&lt;p&gt;简单输入输出练习。&lt;br&gt;输出答案用空行分开，但是最后一行的换行符不能省略，否则会出现迷之PE。
+      &lt;h2 id=&quot;A-A-B练习&quot;&gt;&lt;a href=&quot;#A-A-B练习&quot; class=&quot;headerlink&quot; title=&quot;A. A+B练习&quot;&gt;&lt;/a&gt;A. A+B练习&lt;/h2&gt;&lt;p&gt;简单输入输出练习。&lt;br&gt;输出答案用空行分开，但是最后一行的换行符不能省略，否则会出现迷之PE。&lt;/p&gt;
+&lt;h5 id=&quot;AC代码：&quot;&gt;&lt;a href=&quot;#AC代码：&quot; class=&quot;headerlink&quot; title=&quot;AC代码：&quot;&gt;&lt;/a&gt;AC代码：&lt;/h5&gt;
     
     </summary>
     
@@ -177,9 +180,10 @@
     <link href="http://yoursite.com/2016/09/28/contest/"/>
     <id>http://yoursite.com/2016/09/28/contest/</id>
     <published>2016-09-28T09:58:54.000Z</published>
-    <updated>2016-09-28T12:05:57.000Z</updated>
+    <updated>2016-11-27T13:17:44.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="比赛信息"><a href="#比赛信息" class="headerlink" title="比赛信息"></a>比赛信息</h3><h5 id="第一次班赛："><a href="#第一次班赛：" class="headerlink" title="第一次班赛："></a>第一次班赛：</h5><p><strong>Cyan</strong> <code>10月2日 19：00 - 22：00</code><br>网址：<a href="http://njoj.org/Contest/948/" target="_blank" rel="external">http://njoj.org/Contest/948/</a><br>密码：<code>9151068404</code><br><strong>Maroon</strong> <code>10月6日 19：00 - 22：00</code></p>
+<a id="more"></a>
 <h3 id="班赛赛制"><a href="#班赛赛制" class="headerlink" title="班赛赛制"></a>班赛赛制</h3><p>同ACM赛制，按通过题数排名，题数相同的按罚时排名，罚时较少的在前。<br>罚时计算方法：每题初次通过的时间 + (未通过次数 * 20)<br>若有多场比赛，取每场比赛的最佳排位。排位 = 排名 / 参赛人数。<br>参赛人数不足5人，则该场比赛不计入排名。</p>
 <h3 id="Online-Judge"><a href="#Online-Judge" class="headerlink" title="Online Judge"></a>Online Judge</h3><p>学校OJ网址：<a href="http://njoj.org" target="_blank" rel="external">njoj.org</a><br>请在Online Judge上注册登录账号。<br>为方便最终排名统计，用户名推荐使用学号。<br>若不是用学号，请在昵称中填写学号或姓名。</p>
 <h3 id="参赛流程"><a href="#参赛流程" class="headerlink" title="参赛流程"></a>参赛流程</h3><ol>
@@ -260,7 +264,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;比赛信息&quot;&gt;&lt;a href=&quot;#比赛信息&quot; class=&quot;headerlink&quot; title=&quot;比赛信息&quot;&gt;&lt;/a&gt;比赛信息&lt;/h3&gt;&lt;h5 id=&quot;第一次班赛：&quot;&gt;&lt;a href=&quot;#第一次班赛：&quot; class=&quot;headerlink&quot; title=&quot;第一次班赛
+      &lt;h3 id=&quot;比赛信息&quot;&gt;&lt;a href=&quot;#比赛信息&quot; class=&quot;headerlink&quot; title=&quot;比赛信息&quot;&gt;&lt;/a&gt;比赛信息&lt;/h3&gt;&lt;h5 id=&quot;第一次班赛：&quot;&gt;&lt;a href=&quot;#第一次班赛：&quot; class=&quot;headerlink&quot; title=&quot;第一次班赛：&quot;&gt;&lt;/a&gt;第一次班赛：&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;Cyan&lt;/strong&gt; &lt;code&gt;10月2日 19：00 - 22：00&lt;/code&gt;&lt;br&gt;网址：&lt;a href=&quot;http://njoj.org/Contest/948/&quot;&gt;http://njoj.org/Contest/948/&lt;/a&gt;&lt;br&gt;密码：&lt;code&gt;9151068404&lt;/code&gt;&lt;br&gt;&lt;strong&gt;Maroon&lt;/strong&gt; &lt;code&gt;10月6日 19：00 - 22：00&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
@@ -272,7 +276,7 @@
     <link href="http://yoursite.com/2016/09/06/log/"/>
     <id>http://yoursite.com/2016/09/06/log/</id>
     <published>2016-09-06T11:09:58.000Z</published>
-    <updated>2016-11-20T09:04:45.000Z</updated>
+    <updated>2016-11-27T13:17:55.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="2016-9-6"><a href="#2016-9-6" class="headerlink" title="2016-9-6"></a>2016-9-6</h3><h4 id="篮球赛"><a href="#篮球赛" class="headerlink" title="篮球赛"></a>篮球赛</h4><table>
 <thead>
@@ -305,6 +309,7 @@
 <li><strong>观众</strong>：姜淼 陈清梅 傅媛媛 张梦雪 王国彬 杨飞明 肖晨阳 孙维华 沈思远 郎宗源 郝士玮 韩飞宇</li>
 </ul>
 <p><br></p>
+<a id="more"></a>
 <p>血虐。<br>对手看起来很强，然而他们第一节挂零。<br><code>18：0</code>梦幻开局。<br>第三节首发全下，依旧保持分差。<br>最终比分锁定在<code>55：29</code>。</p>
 <blockquote>
 <p>刘兆楠，来一个！</p>
@@ -611,7 +616,37 @@ int main(){
     
     <summary type="html">
     
-      &lt;h3 id=&quot;2016-9-6&quot;&gt;&lt;a href=&quot;#2016-9-6&quot; class=&quot;headerlink&quot; title=&quot;2016-9-6&quot;&gt;&lt;/a&gt;2016-9-6&lt;/h3&gt;&lt;h4 id=&quot;篮球赛&quot;&gt;&lt;a href=&quot;#篮球赛&quot; class=&quot;headerlink&quot; ti
+      &lt;h3 id=&quot;2016-9-6&quot;&gt;&lt;a href=&quot;#2016-9-6&quot; class=&quot;headerlink&quot; title=&quot;2016-9-6&quot;&gt;&lt;/a&gt;2016-9-6&lt;/h3&gt;&lt;h4 id=&quot;篮球赛&quot;&gt;&lt;a href=&quot;#篮球赛&quot; class=&quot;headerlink&quot; title=&quot;篮球赛&quot;&gt;&lt;/a&gt;篮球赛&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;15级四五班联队&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;14级智能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;第一节&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;18&lt;/td&gt;
+&lt;td&gt;:&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;最终比分&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;55&lt;/td&gt;
+&lt;td&gt;:&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;29&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;参赛&lt;/strong&gt;：蔡光兴 谢能显 李永泽 李文锋 黄步鑫 韩振宇 周靖阳 刘兆楠 &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;女生投篮&lt;/strong&gt;：杨佳琪 窦悦 郑清容 &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;观众&lt;/strong&gt;：姜淼 陈清梅 傅媛媛 张梦雪 王国彬 杨飞明 肖晨阳 孙维华 沈思远 郎宗源 郝士玮 韩飞宇&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -625,7 +660,7 @@ int main(){
     <link href="http://yoursite.com/2016/07/11/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95%EF%BC%9A%E5%8D%8A%E5%B9%B3%E9%9D%A2%E4%BA%A4/"/>
     <id>http://yoursite.com/2016/07/11/计算几何：半平面交/</id>
     <published>2016-07-11T01:52:19.000Z</published>
-    <updated>2016-07-15T06:13:01.000Z</updated>
+    <updated>2016-11-27T13:17:34.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>相当于中学的时候学的线性规划，用n条直线去切割一个平面，每条直线代表一定的限制，最后如果有解就会在中间留下一个凸核：</p>
@@ -643,7 +678,7 @@ int main(){
 <p>判断p-1与p+1是不是在核内，如果是，则肯定有交点</p>
 <p>分别把求出的交点加入点集</p>
 <p>不断重复的做下去</p>
-<p>最后点集中的点就是要求的的可行解<br><img src="http://pic002.cnblogs.com/images/2012/239942/2012012021352768.jpg" alt="cmd-markdown-logo"></p>
+<p>最后点集中的点就是要求的的可行解<br><a id="more"></a><br><img src="http://pic002.cnblogs.com/images/2012/239942/2012012021352768.jpg" alt="cmd-markdown-logo"></p>
 <h3 id="2-主代码"><a href="#2-主代码" class="headerlink" title="2. 主代码"></a>2. 主代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">halfPlaneIntersection</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    sort(order,order+ln,cmp);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;ln;i++)</div><div class="line">        <span class="keyword">if</span> (dblcmp(l[order[i]].angle-l[order[j]].angle)&gt;<span class="number">0</span>)</div><div class="line">            order[++j]=order[i];</div><div class="line">    ln=j+<span class="number">1</span>;</div><div class="line">    dq[<span class="number">0</span>]=order[<span class="number">0</span>];</div><div class="line">    dq[<span class="number">1</span>]=order[<span class="number">1</span>];</div><div class="line">    bot=<span class="number">0</span>;</div><div class="line">    top=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">2</span>;i&lt;ln;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[i]],l[dq[top<span class="number">-1</span>]],l[dq[top]]))</div><div class="line">            top--;</div><div class="line">        <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[i]],l[dq[bot+<span class="number">1</span>]],l[dq[bot]]))</div><div class="line">            bot++;</div><div class="line">        dq[++top]=order[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[bot]],l[dq[top<span class="number">-1</span>]],l[dq[top]]))</div><div class="line">        top--;</div><div class="line">    <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[top]],l[dq[bot+<span class="number">1</span>]],l[dq[bot]]))</div><div class="line">        bot++;</div><div class="line">    dq[++top] = dq[bot];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="3-更多的一些要求"><a href="#3-更多的一些要求" class="headerlink" title="3. 更多的一些要求"></a>3. 更多的一些要求</h3><blockquote>
 <ul>
@@ -689,7 +724,15 @@ int main(){
 &lt;li&gt;多边形的核&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p
+&lt;p&gt;&lt;img src=&quot;http://pic002.cnblogs.com/images/2012/239942/2012012021331578.jpg&quot; width=&quot;300&quot; height=&quot;200&quot; alt=&quot;示意图&quot;/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;什么是-半平面交-？&quot;&gt;&lt;a href=&quot;#什么是-半平面交-？&quot; class=&quot;headerlink&quot; title=&quot;什么是 半平面交 ？&quot;&gt;&lt;/a&gt;什么是 &lt;em&gt;半平面交&lt;/em&gt; ？&lt;/h2&gt;&lt;p&gt;典型的例子 ：给你一个多边形，判断多边形内是否存在一个点，从这个点可以看到多边形周围所有的点。&lt;/p&gt;
+&lt;h3 id=&quot;1-做法：&quot;&gt;&lt;a href=&quot;#1-做法：&quot; class=&quot;headerlink&quot; title=&quot;1. 做法：&quot;&gt;&lt;/a&gt;1. 做法：&lt;/h3&gt;&lt;p&gt;多边形的每条边都是一个约束条件，边的顺序为顺时针&lt;/p&gt;
+&lt;p&gt;用每条边的直线去切割当前平面：枚举平面点集中的点，假如当前点(p)在核外，&lt;/p&gt;
+&lt;p&gt;判断p-1与p+1是不是在核内，如果是，则肯定有交点&lt;/p&gt;
+&lt;p&gt;分别把求出的交点加入点集&lt;/p&gt;
+&lt;p&gt;不断重复的做下去&lt;/p&gt;
+&lt;p&gt;最后点集中的点就是要求的的可行解&lt;br&gt;
     
     </summary>
     

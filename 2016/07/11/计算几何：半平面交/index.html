@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>计算几何：半平面交 | Messy</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Messy">
+    <meta name="author" content="Messy Shen">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Messy" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Computational Geometry</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Others</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/计算几何/" class="animsition-link">计算几何<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://messir.lofter.com" class="animsition-link">LOFTER</a></li>
+                    
+                    <li><a href="https://icpc.njust.edu.cn" class="animsition-link">NJUST</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Messy</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-07-11T01:52:19.000Z" itemprop="datePublished">
+          2016-07-11
+      </time>
+    
+    
+    | 
+    <a href='/tags/Computational-Geometry/'>Computational Geometry</a>
+    
+    
+</span>
+                <h1>计算几何：半平面交</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<hr>
+<p>相当于中学的时候学的线性规划，用n条直线去切割一个平面，每条直线代表一定的限制，最后如果有解就会在中间留下一个凸核：</p>
+<blockquote>
+<ul>
+<li>线性规划</li>
+<li>多边形的核</li>
+</ul>
+</blockquote>
+<p><img src="http://pic002.cnblogs.com/images/2012/239942/2012012021331578.jpg" width="300" height="200" alt="示意图"></p>
+<hr>
+<h2 id="什么是-半平面交-？"><a href="#什么是-半平面交-？" class="headerlink" title="什么是 半平面交 ？"></a>什么是 <em>半平面交</em> ？</h2><p>典型的例子 ：给你一个多边形，判断多边形内是否存在一个点，从这个点可以看到多边形周围所有的点。</p>
+<h3 id="1-做法："><a href="#1-做法：" class="headerlink" title="1. 做法："></a>1. 做法：</h3><p>多边形的每条边都是一个约束条件，边的顺序为顺时针</p>
+<p>用每条边的直线去切割当前平面：枚举平面点集中的点，假如当前点(p)在核外，</p>
+<p>判断p-1与p+1是不是在核内，如果是，则肯定有交点</p>
+<p>分别把求出的交点加入点集</p>
+<p>不断重复的做下去</p>
+<p>最后点集中的点就是要求的的可行解<br><img src="http://pic002.cnblogs.com/images/2012/239942/2012012021352768.jpg" alt="cmd-markdown-logo"></p>
+<h3 id="2-主代码"><a href="#2-主代码" class="headerlink" title="2. 主代码"></a>2. 主代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">halfPlaneIntersection</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    sort(order,order+ln,cmp);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;ln;i++)</div><div class="line">        <span class="keyword">if</span> (dblcmp(l[order[i]].angle-l[order[j]].angle)&gt;<span class="number">0</span>)</div><div class="line">            order[++j]=order[i];</div><div class="line">    ln=j+<span class="number">1</span>;</div><div class="line">    dq[<span class="number">0</span>]=order[<span class="number">0</span>];</div><div class="line">    dq[<span class="number">1</span>]=order[<span class="number">1</span>];</div><div class="line">    bot=<span class="number">0</span>;</div><div class="line">    top=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">2</span>;i&lt;ln;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[i]],l[dq[top<span class="number">-1</span>]],l[dq[top]]))</div><div class="line">            top--;</div><div class="line">        <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[i]],l[dq[bot+<span class="number">1</span>]],l[dq[bot]]))</div><div class="line">            bot++;</div><div class="line">        dq[++top]=order[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[bot]],l[dq[top<span class="number">-1</span>]],l[dq[top]]))</div><div class="line">        top--;</div><div class="line">    <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[top]],l[dq[bot+<span class="number">1</span>]],l[dq[bot]]))</div><div class="line">        bot++;</div><div class="line">    dq[++top] = dq[bot];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-更多的一些要求"><a href="#3-更多的一些要求" class="headerlink" title="3. 更多的一些要求"></a>3. 更多的一些要求</h3><blockquote>
+<ul>
+<li>核的面积——三角形分割</li>
+<li>核的重心——重心公式</li>
+</ul>
+</blockquote>
+<p><img src="http://pic002.cnblogs.com/images/2011/287127/2011080816501931.jpg" alt="cmd-markdown-logo"><br><img src="http://pic002.cnblogs.com/images/2011/287127/2011080817284080.jpg" alt="cmd-markdown-logo"><br><img src="http://pic002.cnblogs.com/images/2011/287127/2011080817134162.jpg" alt="cmd-markdown-logo"></p>
+<hr>
+<h2 id="现在可以过水题了……"><a href="#现在可以过水题了……" class="headerlink" title="现在可以过水题了……"></a>现在可以过水题了……</h2><h4 id="poj-3335"><a href="#poj-3335" class="headerlink" title="poj 3335"></a>poj 3335</h4><p>传送门：<a href="http://poj.org/problem?id=3335" target="_blank" rel="external">http://poj.org/problem?id=3335</a></p>
+<h4 id="poj-2451"><a href="#poj-2451" class="headerlink" title="poj 2451"></a>poj 2451</h4><p>传送门：<a href="http://poj.org/problem?id=2451" target="_blank" rel="external">http://poj.org/problem?id=2451</a></p>
+<hr>
+<h2 id="然而我们需要更快一点的算法"><a href="#然而我们需要更快一点的算法" class="headerlink" title="然而我们需要更快一点的算法"></a>然而我们需要更快一点的算法</h2><p>先引用一下nlgn算法的介绍，在zzy论文里也有详细介绍.</p>
+<p>传送门：<a href="http://wenku.baidu.com/link?url=-SuOjErNbhSY3NBrL7WtJHAL1F6SzzuAjlm1TV0y8QlTlK7vzlxQ7NHvH7K5WSnOqaipIEGTjZ7czJYobcej0YyopbsQD9Fyy1p3rD96K8u" target="_blank" rel="external">http://wenku.baidu.com/link?url=-SuOjErNbhSY3NBrL7WtJHAL1F6SzzuAjlm1TV0y8QlTlK7vzlxQ7NHvH7K5WSnOqaipIEGTjZ7czJYobcej0YyopbsQD9Fyy1p3rD96K8u</a></p>
+<h3 id="step1"><a href="#step1" class="headerlink" title="step1."></a>step1.</h3><pre><code>将所有半平面按极角排序，对于极角相同的，选择性的保留一个。 O(nlogn)
+</code></pre><h3 id="step2"><a href="#step2" class="headerlink" title="step2."></a>step2.</h3><pre><code>使用一个双端队列(deque)，加入最开始2个半平面。
+</code></pre><h3 id="step3"><a href="#step3" class="headerlink" title="step3."></a>step3.</h3><pre><code>每次考虑一个新的半平面：
+ a.while deque顶端的两个半平面的交点在当前半平面外:删除deque顶端的半平面
+ b.while deque底部的两个半平面的交点在当前半平面外:删除deque底部的半平面
+ c.将新半平面加入deque顶端
+</code></pre><h3 id="step4"><a href="#step4" class="headerlink" title="step4."></a>step4.</h3><pre><code>删除两端多余的半平面。
+</code></pre><h3 id="具体方法是："><a href="#具体方法是：" class="headerlink" title="具体方法是："></a>具体方法是：</h3><pre><code> a.while deque顶端的两个半平面的交点在底部半平面外:删除deque顶端的半平面
+ b.while deque底部的两个半平面的交点在顶端半平面外:删除deque底部的半平面
+重复a,b直到不能删除为止。
+</code></pre><h3 id="step5"><a href="#step5" class="headerlink" title="step5:"></a>step5:</h3><pre><code>计算出deque顶端和底部的交点即可。
+</code></pre><h3 id="然后就有更多奇怪的题了"><a href="#然后就有更多奇怪的题了" class="headerlink" title="然后就有更多奇怪的题了"></a>然后就有更多奇怪的题了</h3><h3 id="一-bzoj-1038"><a href="#一-bzoj-1038" class="headerlink" title="一. bzoj 1038"></a>一. bzoj 1038</h3><p>传送门：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1038" target="_blank" rel="external">http://www.lydsy.com/JudgeOnline/problem.php?id=1038</a></p>
+<h4 id="题意：给出一个村庄的轮廓，在这个村庄里可以在任意的地方建一个瞭望塔，这个塔需要足够高，使得能够看得村庄的全貌。求这个瞭望塔的最小高度。"><a href="#题意：给出一个村庄的轮廓，在这个村庄里可以在任意的地方建一个瞭望塔，这个塔需要足够高，使得能够看得村庄的全貌。求这个瞭望塔的最小高度。" class="headerlink" title="题意：给出一个村庄的轮廓，在这个村庄里可以在任意的地方建一个瞭望塔，这个塔需要足够高，使得能够看得村庄的全貌。求这个瞭望塔的最小高度。"></a>题意：给出一个村庄的轮廓，在这个村庄里可以在任意的地方建一个瞭望塔，这个塔需要足够高，使得能够看得村庄的全貌。求这个瞭望塔的最小高度。</h4><p><img src="http://img.blog.csdn.net/20141024155550359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhbmd5dXplODMx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" width="400" height="600" alt="示意图"></p>
+<p><strong>思路：对于村庄中的每一条边，瞭望塔为了看见它，必须要在这个直线左侧的半平面区域。这样的话为了满足所有的边的需求，做一次半平面交，瞭望塔的最高点必须在所有边的半平面交的区域内。</strong></p>
+<h3 id="二-poj-3525"><a href="#二-poj-3525" class="headerlink" title="二. poj 3525"></a>二. poj 3525</h3><p>传送门：<a href="http://poj.org/problem?id=3525" target="_blank" rel="external">http://poj.org/problem?id=3525</a></p>
+<h4 id="题意：给定一个凸多边形，求多边形中距离边界最远的点到边界的距离。"><a href="#题意：给定一个凸多边形，求多边形中距离边界最远的点到边界的距离。" class="headerlink" title="题意：给定一个凸多边形，求多边形中距离边界最远的点到边界的距离。"></a>题意：给定一个凸多边形，求多边形中距离边界最远的点到边界的距离。</h4><p><strong>思路 : 每次将凸多边形每条边往里平移d，判断是否存在核；二分d即可。</strong></p>
+<hr>
+<h2 id="最后是你们要的模（fu）板（li）-ヽ-￣▽￣-ノミ-Ю"><a href="#最后是你们要的模（fu）板（li）-ヽ-￣▽￣-ノミ-Ю" class="headerlink" title="最后是你们要的模（fu）板（li）||ヽ(￣▽￣)ノミ|Ю"></a>最后是你们要的模（fu）板（li）||ヽ(<em>￣▽￣</em>)ノミ|Ю</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300005</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> EXP = <span class="number">1e-8</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">struct</span> point</div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> x , y ;</div><div class="line">&#125;p[N];</div><div class="line"><span class="keyword">struct</span> line</div><div class="line">&#123;</div><div class="line">    point a,b;</div><div class="line">    <span class="keyword">double</span> angle;</div><div class="line">&#125;l[N];</div><div class="line"><span class="keyword">int</span> cas,n,top,bot,order[N],ln,dq[N];</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">abs</span><span class="params">(<span class="keyword">double</span> a)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (a&lt;<span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> -a;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dblcmp</span><span class="params">(<span class="keyword">double</span> k)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">abs</span>(k)&lt;EXP)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> k&gt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">det</span><span class="params">(point p0,point p1,point p2)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> (p1.x-p0.x)*(p2.y-p0.y)-(p1.y-p0.y)*(p2.x-p0.x);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> d = dblcmp(l[a].angle-l[b].angle);</div><div class="line">    <span class="keyword">if</span> (d==<span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> dblcmp(det(l[a].a,l[b].a,l[b].b))&lt;<span class="number">0</span>;  <span class="comment">//  逆时针输入（取左侧）时为"&gt;"</span></div><div class="line">    <span class="keyword">return</span> d&lt;<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getIntersect</span> <span class="params">(line l1,line l2,point &amp;p)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">double</span> d1,d2;</div><div class="line">    d1=det(l2.a,l1.b,l1.a);</div><div class="line">    d2=det(l1.b,l2.b,l1.a);</div><div class="line">    p.x=(l2.a.x*d2+l2.b.x*d1)/(d2+d1);</div><div class="line">    p.y=(l2.a.y*d2+l2.b.y*d1)/(d2+d1);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span> <span class="params">(line l0,line l1,line l2)</span></span></div><div class="line">&#123;</div><div class="line">    point p;</div><div class="line">    getIntersect(l1,l2,p);</div><div class="line">    <span class="keyword">return</span> dblcmp(det(p,l0.a,l0.b))&gt;<span class="number">0</span>;		<span class="comment">//  逆时针输入（即取左侧）时为"&lt;"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">addline</span><span class="params">(<span class="keyword">double</span> x1,<span class="keyword">double</span> y1,<span class="keyword">double</span> x2,<span class="keyword">double</span> y2)</span></span></div><div class="line">&#123;</div><div class="line">    l[ln].a.x=x1;</div><div class="line">    l[ln].a.y=y1;</div><div class="line">    l[ln].b.x=x2;</div><div class="line">    l[ln].b.y=y2;</div><div class="line">    l[ln].angle=<span class="built_in">atan2</span>(y2-y1,x2-x1);</div><div class="line">    order[ln]=ln;</div><div class="line">    ln++;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">halfPlaneIntersection</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    sort(order,order+ln,cmp);</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;ln;i++)</div><div class="line">        <span class="keyword">if</span> (dblcmp(l[order[i]].angle-l[order[j]].angle)&gt;<span class="number">0</span>)</div><div class="line">            order[++j]=order[i];</div><div class="line">    ln=j+<span class="number">1</span>;</div><div class="line">    dq[<span class="number">0</span>]=order[<span class="number">0</span>];</div><div class="line">    dq[<span class="number">1</span>]=order[<span class="number">1</span>];</div><div class="line">    bot=<span class="number">0</span>;</div><div class="line">    top=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">2</span>;i&lt;ln;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[i]],l[dq[top<span class="number">-1</span>]],l[dq[top]]))</div><div class="line">            top--;</div><div class="line">        <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[i]],l[dq[bot+<span class="number">1</span>]],l[dq[bot]]))</div><div class="line">            bot++;</div><div class="line">        dq[++top]=order[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[bot]],l[dq[top<span class="number">-1</span>]],l[dq[top]]))</div><div class="line">        top--;</div><div class="line">    <span class="keyword">while</span> (bot&lt;top&amp;&amp;judge(l[order[top]],l[dq[bot+<span class="number">1</span>]],l[dq[bot]]))</div><div class="line">        bot++;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isCore</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (top-bot&gt;<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="built_in">scanf</span> (<span class="string">"%d"</span>,&amp;cas);</div><div class="line">    <span class="keyword">while</span> (cas--)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span> (<span class="string">"%d"</span>,&amp;n);</div><div class="line">        <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;p[i].x,&amp;p[i].y);</div><div class="line">        <span class="keyword">for</span> (ln=i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</div><div class="line">            addline(p[i].x,p[i].y,p[i+<span class="number">1</span>].x,p[i+<span class="number">1</span>].y);</div><div class="line">        addline(p[i].x,p[i].y,p[<span class="number">0</span>].x,p[<span class="number">0</span>].y);</div><div class="line">        halfPlaneIntersection();</div><div class="line">        <span class="keyword">if</span> (isCore())</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</div><div class="line">    &#125;</div><div class="line"><span class="keyword">return</span> <span class="number">0</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>作者：潘喆 沈思远<br>2016 年 7月 11日    </p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2016/09/06/log/" style="float: left;">
+        ← 班级日志
+    </a>
+    
+    
+    <a class="pull-right" href="/2016/07/10/hello-world/">
+        Hello World →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/07/11/计算几何：半平面交/" data-title="计算几何：半平面交" data-url="http://yoursite.com/2016/07/11/计算几何：半平面交/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"messyshen"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Messy Shen. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/12/02/RMQ/</loc>
+    
+    <lastmod>2016-12-02T14:49:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/11/06/algs4-Percolation/</loc>
     
     <lastmod>2016-11-27T13:18:28.000Z</lastmod>

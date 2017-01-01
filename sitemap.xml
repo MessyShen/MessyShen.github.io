@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/01/01/the-infinite-staircase/</loc>
+    
+    <lastmod>2017-01-01T13:32:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/09/06/log/</loc>
+    
+    <lastmod>2016-12-26T09:09:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/13/ramsey/</loc>
     
     <lastmod>2016-12-13T13:21:04.000Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>http://yoursite.com/2016/10/03/key-cyan/</loc>
     
     <lastmod>2016-11-27T13:18:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/09/06/log/</loc>
-    
-    <lastmod>2016-11-27T13:17:55.000Z</lastmod>
     
   </url>
   

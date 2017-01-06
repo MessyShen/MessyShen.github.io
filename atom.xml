@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-01T13:32:43.000Z</updated>
+  <updated>2017-01-06T13:42:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,131 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>离散数学Q&amp;A</title>
+    <link href="http://yoursite.com/2017/01/06/dm/"/>
+    <id>http://yoursite.com/2017/01/06/dm/</id>
+    <published>2017-01-06T13:41:52.000Z</published>
+    <updated>2017-01-06T13:42:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="第二章-命题演算的推理理论"><a href="#第二章-命题演算的推理理论" class="headerlink" title="第二章 命题演算的推理理论"></a>第二章 命题演算的推理理论</h3><blockquote>
+<p>命题演算的假设推理证明方法是什么？</p>
+</blockquote>
+<p>也叫自然推理系统🙃<br>注意以下知识点：</p>
+<ol>
+<li>反证法</li>
+<li>分离规则，拒取规则</li>
+<li>化简</li>
+</ol>
+<p>2010年例题：<br>已知公理<br>$ A:   (P \wedge Q) \rightarrow P$<br>$ B:   (P \wedge Q) \rightarrow Q$<br>$ C:   P\rightarrow (Q\rightarrow (P \wedge Q))$<br>及分离规则和代入规则，试用假设推理证明下面公式为本系统的定理:<br>$ (P\rightarrow R) \rightarrow (((Q\rightarrow S) \wedge (P\wedge Q))\rightarrow (S \wedge R)) $</p>
+<p>证明： PPT03-59</p>
+<blockquote>
+<p>命题演算的归结推理证明方法是什么？</p>
+</blockquote>
+<p>$A \rightarrow B$，归结为$A \wedge \neg B$。<br>归结证明过程：</p>
+<ol>
+<li>建立子句集</li>
+<li>归结…</li>
+</ol>
+<p>若干<del>重要</del>的归结规则：</p>
+<table>
+<thead>
+<tr>
+<th>父辈子句</th>
+<th>归结式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$P$和$\neg P\vee Q$</td>
+<td>$Q$</td>
+<td>三段论</td>
+</tr>
+<tr>
+<td>$P\vee Q$和$\neg P\vee Q$</td>
+<td>$Q$</td>
+<td>子句合并</td>
+</tr>
+<tr>
+<td>$P\vee Q$和$\neg P\vee \neg Q$</td>
+<td>$\neg P\vee P$或$\neg Q\vee Q$</td>
+<td>重言式</td>
+</tr>
+<tr>
+<td>$\neg P$和 $P$</td>
+<td>□</td>
+<td>空子句 归结结束</td>
+</tr>
+<tr>
+<td>$\neg P$和 $P$</td>
+<td>□</td>
+<td>空子句 归结结束</td>
+</tr>
+<tr>
+<td>$P\vee Q$和$\neg Q\vee \neg R$</td>
+<td>$P \vee \neg R$</td>
+<td>一般归结</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>在命题演算归结推理证明过程中容易犯的错误有哪些？</p>
+</blockquote>
+<ol>
+<li>信仰不坚定</li>
+<li>对结论没有取否定</li>
+</ol>
+<h3 id="第三章-谓词演算基础"><a href="#第三章-谓词演算基础" class="headerlink" title="第三章 谓词演算基础"></a>第三章 谓词演算基础</h3><blockquote>
+<p>在知识翻译时，紧跟在量词之后的主联结词是怎么规定的？</p>
+</blockquote>
+<h3 id="第九章-图"><a href="#第九章-图" class="headerlink" title="第九章 图"></a>第九章 图</h3><p>知识点：</p>
+<ol>
+<li>图的基本概念</li>
+<li>图中的通路、图的连通性和图的矩阵表示</li>
+<li>带权图</li>
+<li>欧拉图</li>
+<li>哈密尔顿图</li>
+<li>二部图</li>
+<li>平面图</li>
+</ol>
+<h4 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A:"></a>Q &amp; A:</h4><blockquote>
+<p>简单无向图的定义是什么？ 补图的定义是什么？</p>
+</blockquote>
+<p>无向图：设$G=(V,E)$ 是一个无向图，若其中$V$是一个非空有限集合，$E$是一个集合，$E$中的元素为$V$中 <em>仅含二个元素</em> 的<strong>多重子集</strong>。<br>简单图：没有多重边，没有自环，没有孤立点的图。<br>补图：设$G=(V,E)$是一个图，它没有自环和多重边。$\tilde{G}=(V,E’)$ 其中$E’={ {u,v} \mid u\neq v, u, v\in V, {u,v}\notin E}$ ，则称$\tilde{G}$为$G$的补图。<br>自互补图：一个无向简单图如果同构于它的补图，则称这个图为自互补图。</p>
+<blockquote>
+<p>握手定理是什么？</p>
+</blockquote>
+<p>$\sum\limits_{v\in V} d(v)=2|E|$</p>
+<p>推论：任何一个无向图，度数为奇数的顶点有偶数个。<br>类似结论：$\sum\limits<em>{v\in V} d</em>{出}(v)= \sum\limits<em>{v\in V} d</em>{入}(v)=|E|$</p>
+<blockquote>
+<p>什么是连通性？什么是连通分支？</p>
+</blockquote>
+<p>简单通路：它的每一条边都不重复出现。<br>初等通路：它的每一个顶点都不重复出现。<br>连通图：$G=(V,E)$是一个无向图，若$G$中任意两个不同的顶点之间在$G$中都有通路存在，则称$G$是一个连通图，否则称$G$为不连通图。<br>有向连通：称一个有向图是连通的，如果去掉边的方向后所得无向图是连通的。<br>单侧连通：一个有向图任意二点之间都有单向通路。<br>强连通：如果一个有向图任意二点之间都有双向的通路，则称为强连通图。<br>连通分支：<br>设$G$为一个无向图, $R$是$G$中顶点之间的连通关系, 按着$R$可将$V(G)$划分成$k(k≥1)$个等价类,记成<br>$V_1,V_2,···,V_k,$<br>称由它们导出的子图$G[V_1],G[V_2],…,G[V_k]$ 为$G$的连通分支。</p>
+<blockquote>
+<p>欧拉图的充分必要条件是什么？</p>
+</blockquote>
+<p>欧拉通路：经过图中每条边一次且一次的通路。<br>具有欧拉<em>回路</em>的图叫欧拉图。</p>
+<p>(一笔画)定理：一个没有孤立点的无向图具有欧拉通路，当且仅当它是连通的，并且<strong>或者</strong>没有奇数度的顶点，<strong>或者</strong>有且仅有两个奇数度的顶点。</p>
+<p>定理：一个无向图有欧拉回路，当且仅当所有顶点均为偶数度。<br><a href="https://en.wikipedia.org/wiki/De_Bruijn_sequence" target="_blank" rel="external">德布鲁因序列问题</a></p>
+<blockquote>
+<p>哈密尔顿图的充分条件是什么？必要条件是什么？</p>
+</blockquote>
+<p>圈：初等回路。<br>哈密尔顿通路：经过图中每个顶点一次且一次的通路。<br>哈密尔顿圈：经过图中每个顶点一次且一次的圈。<br>哈密尔顿图：含有哈密尔顿圈的图。</p>
+<p>必要条件：<br>若$G=(V,E)$ 是一个哈密尔顿图，则对于$V$的每一个非空子集$S$，均有<br>$W(G－S) ≤|S|$<br>其中$W(G－S)$表示图$G$擦去属于$S$中的顶点后，剩下子图的连通分枝的个数。<br>（此条件不充分：<a href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Petersen_graph.svg/1024px-Petersen_graph.svg.png?1483604000824" target="_blank" rel="external">Petersen图</a>）</p>
+<p>充分条件：<br>设G=(V,E)是一个无向简单图，$|V|=n, n\geq 3$ 若对于任意的两个不相邻顶点u，v∊V，<br>$d(u)+d(v) \geq n$<br>那么, G是哈密尔顿图 </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;第二章-命题演算的推理理论&quot;&gt;&lt;a href=&quot;#第二章-命题演算的推理理论&quot; class=&quot;headerlink&quot; title=&quot;第二章 命题演算的推理理论&quot;&gt;&lt;/a&gt;第二章 命题演算的推理理论&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;命题演算的假设推理证明方法
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>无尽楼梯</title>

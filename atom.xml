@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-07T06:37:28.000Z</updated>
+  <updated>2017-01-07T07:56:06.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,11 @@
     <link href="http://yoursite.com/2017/01/06/dm/"/>
     <id>http://yoursite.com/2017/01/06/dm/</id>
     <published>2017-01-06T13:41:52.000Z</published>
-    <updated>2017-01-07T06:37:28.000Z</updated>
+    <updated>2017-01-07T07:56:06.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="第二章-命题演算的推理理论"><a href="#第二章-命题演算的推理理论" class="headerlink" title="第二章 命题演算的推理理论"></a>第二章 命题演算的推理理论</h3><hr>
+    <content type="html"><![CDATA[<p>本篇又称为《30分钟离散数学从入门到出门》，《降金忠三十八问》。</p>
+<a id="more"></a>
+<h3 id="命题演算的推理理论"><a href="#命题演算的推理理论" class="headerlink" title="命题演算的推理理论"></a>命题演算的推理理论</h3><hr>
 <blockquote>
 <p>命题演算的假设推理证明方法是什么？</p>
 </blockquote>
@@ -80,7 +82,6 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <blockquote>
 <p>在命题演算归结推理证明过程中容易犯的错误有哪些？</p>
 </blockquote>
@@ -88,22 +89,13 @@
 <li>信仰不坚定</li>
 <li>对结论没有取否定</li>
 </ol>
-<h3 id="第三章-谓词演算基础"><a href="#第三章-谓词演算基础" class="headerlink" title="第三章 谓词演算基础"></a>第三章 谓词演算基础</h3><hr>
-<blockquote>
+<hr>
+<h3 id="谓词演算基础"><a href="#谓词演算基础" class="headerlink" title="谓词演算基础"></a>谓词演算基础</h3><blockquote>
 <p>在知识翻译时，紧跟在量词之后的主联结词是怎么规定的？</p>
 </blockquote>
-<h3 id="第九章-图"><a href="#第九章-图" class="headerlink" title="第九章 图"></a>第九章 图</h3><p>知识点：</p>
-<ol>
-<li>图的基本概念</li>
-<li>图中的通路、图的连通性和图的矩阵表示</li>
-<li>带权图</li>
-<li>欧拉图</li>
-<li>哈密尔顿图</li>
-<li>二部图</li>
-<li>平面图</li>
-</ol>
-<h4 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A:"></a>Q &amp; A:</h4><hr>
-<blockquote>
+<p>额 这里先跳过一些。（一些？</p>
+<hr>
+<h3 id="图-树"><a href="#图-树" class="headerlink" title="图 树"></a>图 树</h3><blockquote>
 <p>简单无向图的定义是什么？ 补图的定义是什么？</p>
 </blockquote>
 <p><code>无向图</code>：设$G=(V,E)$ 是一个无向图，若其中$V$是一个非空有限集合，$E$是一个集合，$E$中的元素为$V$中 <em>仅含二个元素</em> 的<strong>多重子集</strong>。<br><code>简单图</code>：没有多重边，没有自环，没有孤立点的图。<br><code>补图</code>：设$G=(V,E)$是一个图，它没有自环和多重边。$\tilde{G}=(V,E’)$ 其中$E’={ {u,v} \mid u\neq v, u, v\in V, {u,v}\notin E}$ ，则称$\tilde{G}$为$G$的补图。<br><code>自互补图</code>：一个无向简单图如果同构于它的补图，则称这个图为自互补图。</p>
@@ -133,7 +125,6 @@
 <p>必要条件：<br>若$G=(V,E)$ 是一个哈密尔顿图，则对于$V$的每一个非空子集$S$，均有$$W(G－S) ≤|S|$$<br>其中$W(G－S)$表示图$G$擦去属于$S$中的顶点后，剩下子图的连通分枝的个数。<br>（此条件不充分：<a href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Petersen_graph.svg/1024px-Petersen_graph.svg.png?1483604000824" target="_blank" rel="external">Petersen图</a>）</p>
 <p>充分条件：<br>设$G=(V,E)$是一个无向简单图，$|V|=n, n\geq 3$，若对于任意的两个不相邻顶点$u，v\in V$，$$d(u)+d(v) \geq n$$ 那么, $G$是哈密尔顿图</p>
 <p>又有：<br>设$G=(V,E)$是一个简单图，$|V|=n$，若对于任意的两个不相邻顶点$u，v\in V$，$$d(u)+d(v) \geq n-1$$ 那么, $G$含有哈密尔顿<em>通路</em></p>
-<hr>
 <blockquote>
 <p>典型的哈密尔顿图有哪些？</p>
 </blockquote>
@@ -143,13 +134,64 @@
 <blockquote>
 <p>什么是二部图？二部图的边与顶点的关系是什么？</p>
 </blockquote>
+<p><code>二部图</code>：你懂它是什么的。<br> 定理：一个图是二部图当且仅当它的所有回路的长度都是偶数</p>
+<p>例题：<br>若$G$是一个二部图，若$|V|=n, |E|=m$，证明$m \leq \frac{n^2}{4} $<br>提示：基本不等式。<br>答案见 PPT19-12 或 书P155例7</p>
+<hr>
+<blockquote>
+<p>关于连通平面图的欧拉公式是什么？</p>
+</blockquote>
+<p>对于任何一个连通的平面图$G=(V,E)，|V|=n，|E|=m$，有$$n-m+r=2$$其中r 代表G的区域数。<br>由于难以知道区域数r，此公式难以使用。故常用以下定理。</p>
+<blockquote>
+<p>简单连通平面图的必要条件是什么？简单连通平面图的边与区域有什么关系？</p>
+</blockquote>
+<p>对于任何一个简单的连通平面图$G=(V,E)，|V|=n，|E|=m$，有$$m \leq 3n-6$$<br>证明：任何一个区域至少由3条边围成，所以$2m \geq 3r$，结合欧拉公式证明。</p>
+<p>对于任何一个区域至少由4条边围成的简单平面图，有$2m \geq 4r$，可证明$m \leq 2n-4$</p>
+<p>还有一个很牛逼的定理：<br>一个图若不包含与$K<em>5$或$K</em>{3,3}$在2度顶点内同构的子图$\Leftrightarrow$它是平面图。</p>
+<hr>
+<blockquote>
+<p>什么是树？树的等价定义有哪些？</p>
+</blockquote>
+<p>一个无向图若连通且不含圈，则称它为一棵树，记为 $T=(V,E)$。<br>$$|E|=|V|-1$$</p>
+<p>等价定义：<br>T=(V,E)是一个简单图，以下三条等价。</p>
+<ul>
+<li><ol>
+<li>T是一棵树。</li>
+</ol>
+</li>
+<li><ol>
+<li>T连通, 且 $|V| - 1=|E|$。</li>
+</ol>
+</li>
+<li><ol>
+<li>T中无圈, 且 $|V| - 1=|E|$。</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>对于一棵树，顶点的度数与边数有什么关系？</p>
+</blockquote>
+<p>树叶：度数为1的点。<br>分支点：度数大于等于2的点。</p>
+<hr>
+<h3 id="群"><a href="#群" class="headerlink" title="群"></a>群</h3><blockquote>
+<p>什么是半群、含幺半群？</p>
+</blockquote>
+<p>半群：封闭性。结合律。<br>幺元：左幺元&amp;&amp;右幺元。<br>含幺半群：含有幺元的半群。</p>
+<blockquote>
+<p>什么是群？</p>
+</blockquote>
+<p>封闭性。结合律。幺元。逆元。</p>
+<blockquote>
+<p>有哪些典型的群？</p>
+</blockquote>
+<p>看作业 作业里有张表。</p>
+<blockquote>
+<p>什么是群的同态、群的同构？什么是群的自同构映射？</p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;第二章-命题演算的推理理论&quot;&gt;&lt;a href=&quot;#第二章-命题演算的推理理论&quot; class=&quot;headerlink&quot; title=&quot;第二章 命题演算的推理理论&quot;&gt;&lt;/a&gt;第二章 命题演算的推理理论&lt;/h3&gt;&lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;命题演算的假设推
+      &lt;p&gt;本篇又称为《30分钟离散数学从入门到出门》，《降金忠三十八问》。&lt;/p&gt;
     
     </summary>
     

@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/06/dm/index.html">
 <meta property="og:site_name" content="Messy">
 <meta property="og:description" content="本篇又称为《30分钟离散数学从入门到被锁在门里》，《降金忠三十八问》。">
-<meta property="og:updated_time" content="2017-01-08T03:12:48.000Z">
+<meta property="og:updated_time" content="2017-01-08T05:35:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="离散数学 Q&A">
 <meta name="twitter:description" content="本篇又称为《30分钟离散数学从入门到被锁在门里》，《降金忠三十八问》。">
@@ -436,20 +436,37 @@
 </blockquote>
 <p><code>置换</code>准则：置换必须处处进行。要求没有变量被含有同一变量的项代替。<br>错误的例子：<br>$P(x,g(x),b)$置换为$P(a,g(x),b)$。错误原因：没有处处进行。<br>$P(x,g(x),b)$置换为$P(f(x),g(f(x)),b)$。错误原因：x被含有同一变量的项代替了。</p>
 <p>谓词演算的归结证明方法类似前面命题演算的归结推理证明方法，即将目标公式(结论)的否定加入公式集中，归结出空子句。</p>
-<p><em>霍恩逻辑子句？</em></p>
+<p><em>霍恩逻辑子句？</em> 三十八问里没有这一条 但还是去看看吧 <del>（我猜今年不考）</del></p>
 <hr>
 <h3 id="递归函数论"><a href="#递归函数论" class="headerlink" title="递归函数论"></a>递归函数论</h3><blockquote>
 <p>把函数化为(m,n)标准迭置的方法是什么？</p>
 </blockquote>
-
-设有一个$m$元函数  $f(x1, x2, \cdots , xm)$
-, m个n元函数$g_1{\{ \cdots \}}$，$g_2{\{ \cdots \}}$，$g_m{\{ \cdots \}}$。由f和g如下作出的函数：
+<p>这道题年年都考。<br>
+设有一个$m$元函数  $f(x_1, x_2, \cdots , x_m)$
+, $m$个$n$元函数$g_1{\{ \cdots \}}$，$g_2{\{ \cdots \}}$，$g_m{\{ \cdots \}}$。由$f$和$g$如下作出的函数：
 $$h(x_1,x_2,\cdots ,x_n) = f(g_1{\{x_1,\cdots ,x_n\}},g_2{\{x_1,\cdots ,x_n\}},g_n{\{x_1,\cdots ,x_n\}})$$
 称为$(m,n)$标准迭置。
 简记为：
 $$h = f(g_1,g_2,\cdots ,g_n)$$
 
+例如：$h(x_1,x_2,x_3)=f(3,g_1(x_1,2),g_2(x_1,x_2),x_3)$
+解：
+$h(x_1,x_2,x_3)=f(h_1,h_2,h_3,h_4)$ 其中，$h_1(x_1,x_2,x_3)=S^3OI_{31}(x_1,x_2,x_3)$$h_2(x_1,x_2,x_3)=g_1(I_{31}(x_1,x_2,x_3),S^2OI_{32}(x_1,x_2,x_3))$$h_3(x_1,x_2,x_3)=g_2(I_{31}(x_1,x_2,x_3)，I_{32}(x_1,x_2,x_3))$$h_4(x_1,x_2,x_3)=I_{33}(x_1,x_2,x_3)$故函数$h_1(x_1,x_2,x_3)$是由函数$h_1,h_2,h_3,h_4$对$f$作$(4，3)$迭置而得。
 
+$h(x_1,x_2,x_3) = f(S^3OI_{31},g_1(I_{31},S^2OI_{32}),g_2(I_{31},I_{32}),I_{33})$
+
+</p>
+<h3 id="集合-关系"><a href="#集合-关系" class="headerlink" title="集合 关系"></a>集合 关系</h3><blockquote>
+<p>什么是集合的包含关系？</p>
+</blockquote>
+<p>you know…</p>
+<blockquote>
+<p>集合的基本运算有哪些？</p>
+</blockquote>
+<p>并、交、差，对称差。<br>不作详细说明。</p>
+<blockquote>
+<p>$A×B$是什么？</p>
+</blockquote>
 <p>额 这里先跳过一些。（一些？</p>
 <hr>
 <h3 id="图-树"><a href="#图-树" class="headerlink" title="图 树"></a>图 树</h3><blockquote>
@@ -461,7 +478,10 @@ $$h = f(g_1,g_2,\cdots ,g_n)$$
 <p>握手定理是什么？</p>
 </blockquote>
 <p>$$\sum\limits_{v\in V} d(v)=2|E|$$</p>
-<p>推论：任何一个无向图，度数为奇数的顶点有偶数个。<br>类似结论：$$\sum\limits<em>{v\in V} d</em>{in}(v)= \sum\limits<em>{v\in V} d</em>{out}(v)=|E|$$</p>
+<p>推论：任何一个无向图，度数为奇数的顶点有偶数个。<br>类似结论：</p>
+
+$$\sum\limits_{v\in V} d_{in}(v)= \sum\limits_{v\in V} d_{out}(v)=|E|$$
+
 <hr>
 <blockquote>
 <p>什么是连通性？什么是连通分支？</p>
@@ -700,7 +720,7 @@ $$h = f(g_1,g_2,\cdots ,g_n)$$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#命题演算的推理理论"><span class="nav-number">1.</span> <span class="nav-text">命题演算的推理理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谓词演算基础"><span class="nav-number">2.</span> <span class="nav-text">谓词演算基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谓词演算的推理理论"><span class="nav-number">3.</span> <span class="nav-text">谓词演算的推理理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归函数论"><span class="nav-number">4.</span> <span class="nav-text">递归函数论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图-树"><span class="nav-number">5.</span> <span class="nav-text">图 树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#群"><span class="nav-number">6.</span> <span class="nav-text">群</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#命题演算的推理理论"><span class="nav-number">1.</span> <span class="nav-text">命题演算的推理理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谓词演算基础"><span class="nav-number">2.</span> <span class="nav-text">谓词演算基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谓词演算的推理理论"><span class="nav-number">3.</span> <span class="nav-text">谓词演算的推理理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归函数论"><span class="nav-number">4.</span> <span class="nav-text">递归函数论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合-关系"><span class="nav-number">5.</span> <span class="nav-text">集合 关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图-树"><span class="nav-number">6.</span> <span class="nav-text">图 树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#群"><span class="nav-number">7.</span> <span class="nav-text">群</span></a></li></ol></div>
             
 
           </div>

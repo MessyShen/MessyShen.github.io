@@ -132,7 +132,7 @@ Output
 
 
 稳定的传送门">
-<meta property="og:updated_time" content="2017-06-12T11:37:55.000Z">
+<meta property="og:updated_time" content="2017-06-12T11:39:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ2480：积性函数的运用">
 <meta name="twitter:description" content="题意输入n, 输出$\sum_{1\leq i\leq n}gcd(i,n)$。
@@ -446,8 +446,21 @@ Output
 </tr>
 </tbody>
 </table>
-<p>可以按照$gcd(i,n)$将结果分为几个部分，如$gcd(i,n)=1$时，这部分的和即为$\varphi(n)$。<br>对于$gcd(i,n)=k$的部分，和为$\varphi(n/k)$。<br>所以有<br>$${\sum<em>{1\leq i\leq n}gcd(i,n)}={\sum</em>{k\vert n} k\varphi(\frac{n}{k})}$$</p>
-<p>令${h(n)={\sum<em>{k\vert n} k\varphi(\frac{n}{k})}}$，可以发现这是一个积性函数。这是《具体数学》习题3.44的一个例子。<br>习题3.44要求证明当f和g都是积性函数的时候，$h(n)=\sum</em>{k\vert n} f(k)g(\frac{n}{k})$也是积性函数。这里令$f(n)=n$,$g(n)=\varphi(n)$即可。<br>网上很多这道题的题解直接说“积性函数的和也是积性函数”，这是错误的。<br>现在令$n=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$,则$h(n)=h(p_1^{a_1})h(p_2^{a_2})…h(p_n^{a<em>n})$。<br>接下来研究的是$h(p^{a})$的值。<br>$$\begin{align*}<br>h(p^{a})&amp;=\sum</em>{k\vert p^a}k\varphi(\frac{p^a}{k})\<br>&amp;=\sum<em>{j=0}^{a}p^j \varphi({p^{a-j}})\<br>&amp;=p^a + \sum</em>{j=0}^{a-1}p^j p^{a-j-1}(p-1) \<br>&amp;=p^a + ap^{a-1}(p-1)<br>\end{align*}$$<br>得到了一个只与p和a有关的式子。所以分解质因数后，根据上式计算即可。<br>注意，在化简的过程中，要仔细考虑$j=a$的情况。</p>
+<p>可以按照$gcd(i,n)$将结果分为几个部分，如$gcd(i,n)=1$时，这部分的和即为$\varphi(n)$。<br>对于$gcd(i,n)=k$的部分，和为$\varphi(n/k)$。<br>所以有<br>
+$${\sum_{1\leq i\leq n}gcd(i,n)}={\sum_{k\vert n} k\varphi(\frac{n}{k})}$$
+
+令${h(n)={\sum_{k\vert n} k\varphi(\frac{n}{k})}}$，可以发现这是一个积性函数。这是《具体数学》习题3.44的一个例子。
+习题3.44要求证明当f和g都是积性函数的时候，$h(n)=\sum_{k\vert n} f(k)g(\frac{n}{k})$也是积性函数。这里令$f(n)=n$,$g(n)=\varphi(n)$即可。
+网上很多这道题的题解直接说“积性函数的和也是积性函数”，这是错误的。
+现在令$n=p_1^{a_1}p_2^{a_2}...p_n^{a_n}$,则$h(n)=h(p_1^{a_1})h(p_2^{a_2})...h(p_n^{a_n})$。
+接下来研究的是$h(p^{a})$的值。
+$$\begin{align*}
+h(p^{a})&=\sum_{k\vert p^a}k\varphi(\frac{p^a}{k})\\
+&=\sum_{j=0}^{a}p^j \varphi({p^{a-j}})\\
+&=p^a + \sum_{j=0}^{a-1}p^j p^{a-j-1}(p-1) \\
+&=p^a + ap^{a-1}(p-1)
+\end{align*}$$
+<br>得到了一个只与p和a有关的式子。所以分解质因数后，根据上式计算即可。<br>注意，在化简的过程中，要仔细考虑$j=a$的情况。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    ll n;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n)) &#123;</div><div class="line">        ll ans = n;</div><div class="line">        <span class="keyword">for</span> (ll i = <span class="number">2</span>; i * i &lt;= n; ++i) &#123;</div><div class="line">            <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                    n /= i;</div><div class="line">                    k++;</div><div class="line">                &#125;</div><div class="line">                ans += ans * k * (i - <span class="number">1</span>) /i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (n != <span class="number">1</span>) &#123;</div><div class="line">            ans = ans * (n * <span class="number">2</span> - <span class="number">1</span>)/n;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-12T11:35:42.000Z</updated>
+  <updated>2017-06-12T11:37:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/06/12/POJ2480/"/>
     <id>http://yoursite.com/2017/06/12/POJ2480/</id>
     <published>2017-06-12T08:55:06.000Z</published>
-    <updated>2017-06-12T11:35:42.000Z</updated>
+    <updated>2017-06-12T11:37:55.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入n, 输出$\sum_{1\leq i\leq n}gcd(i,n)$。</p>
 <table>
@@ -42,6 +42,7 @@
 </tbody>
 </table>
 <p><a href="http://poj.org/problem?id=2480" target="_blank" rel="external">稳定的传送门</a></p>
+<a id="more"></a>
 <h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p>对于一个函数$f(n)$,如果$f(1)=1$，且有$$f(ab)=f(a)f(b), a\perp b$$<br>则$f(n)$具有积性。</p>
 <h4 id="常见的积性函数有："><a href="#常见的积性函数有：" class="headerlink" title="常见的积性函数有："></a>常见的积性函数有：</h4><ol>
 <li>欧拉函数$φ(n)$</li>
@@ -99,7 +100,22 @@
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th st
+&lt;th style=&quot;text-align:left&quot;&gt;Input&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;Output&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;2&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;6&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;a href=&quot;http://poj.org/problem?id=2480&quot;&gt;稳定的传送门&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -113,11 +129,10 @@
     <link href="http://yoursite.com/2017/03/09/camping/"/>
     <id>http://yoursite.com/2017/03/09/camping/</id>
     <published>2017-03-09T11:58:53.000Z</published>
-    <updated>2017-03-09T12:47:27.000Z</updated>
+    <updated>2017-06-12T11:37:45.000Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a>
+    <content type="html"><![CDATA[<p><strong>来一次真正的户外露营，烧烤之后去爬山，去看南京的万家灯火，一览众山小！<br>甚至还有露天电影，露天KTV！<br>以及无限量的烧烤食材和丰富多彩的活动！</strong><br><a id="more"></a></p>
 <p><img src="http://gazettereview.com/wp-content/uploads/2016/02/Camping1.jpg" alt="picture1"></p>
-<p><strong>来一次真正的户外露营，烧烤之后去爬山，去看南京的万家灯火，一览众山小！<br>甚至还有露天电影，露天KTV！<br>以及无限量的烧烤食材和丰富多彩的活动！</strong></p>
 <h1 id="计科一班春季特别活动——露营"><a href="#计科一班春季特别活动——露营" class="headerlink" title="计科一班春季特别活动——露营"></a>计科一班春季特别活动——露营</h1><p><strong>活动时间</strong>：<code>3月17日(周五)下午</code>至<code>3月18日早上</code><br><strong>活动地点</strong>：紫金山体育公园露营基地、民国体育场、灵谷寺<br><strong>面向对象</strong>：计科一班成员,以及成员亲友。<br><strong>活动承办方</strong>：撕扇子（成立于南理工孵化园）</p>
 <p>（以下内容摘自微信公众号：撕扇子）<br>原推送地址（有图！）：请<a href="http://url.cn/45lNm2T" target="_blank" rel="external">戳这里</a></p>
 <h2 id="活动流程"><a href="#活动流程" class="headerlink" title="活动流程"></a>活动流程</h2><h3 id="16-00"><a href="#16-00" class="headerlink" title="16:00"></a>16:00</h3><p>来到营地，首先要把自己的小窝给搭建起来，长那么大相信大家都是第一次过来体验露营，现场会有专门的教练教大家如何搭帐篷。<br><a href="http://mmbiz.qpic.cn/mmbiz_jpg/hsmzw5IdQ8ZS3rgTVjib9ugVx66dl97XcCDO9OscCyj7EVfdoOhoVBpZxNZHx7IRib0ro2fGRE9DSv6myuHlia3bA/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1" target="_blank" rel="external">图</a><br><strong>帐篷尺寸</strong><br><strong>超级豪华大帐篷</strong>，可容纳20人，嗨通宵，需提前预定（数量有限）<br><strong>好基友四人帐</strong>，可掼蛋，谈谈人生，聊聊理想<br><strong>激情双人帐</strong>，隔音不太好，你懂的！</p>
@@ -137,9 +152,7 @@
     
     <summary type="html">
     
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;&lt;img src=&quot;http://gazettereview.com/wp-content/uploads/2016/02/Camping1.jpg&quot; alt=&quot;picture1&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;来一次真正的户外露营，烧
+      &lt;p&gt;&lt;strong&gt;来一次真正的户外露营，烧烤之后去爬山，去看南京的万家灯火，一览众山小！&lt;br&gt;甚至还有露天电影，露天KTV！&lt;br&gt;以及无限量的烧烤食材和丰富多彩的活动！&lt;/strong&gt;&lt;br&gt;
     
     </summary>
     

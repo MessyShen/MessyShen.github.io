@@ -322,8 +322,7 @@
 
       
         
-          
-            <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入n, 输出$\sum_{1\leq i\leq n}gcd(i,n)$。</p>
+          <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入n, 输出$\sum_{1\leq i\leq n}gcd(i,n)$。</p>
 <table>
 <thead>
 <tr>
@@ -342,58 +341,14 @@
 </tr>
 </tbody>
 </table>
-<p><a href="http://poj.org/problem?id=2480" target="_blank" rel="external">稳定的传送门</a></p>
-<h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p>对于一个函数$f(n)$,如果$f(1)=1$，且有$$f(ab)=f(a)f(b), a\perp b$$<br>则$f(n)$具有积性。</p>
-<h4 id="常见的积性函数有："><a href="#常见的积性函数有：" class="headerlink" title="常见的积性函数有："></a>常见的积性函数有：</h4><ol>
-<li>欧拉函数$φ(n)$</li>
-<li>莫比乌斯函数$μ(n)$</li>
-<li>$gcd(n,k)$,当k固定</li>
-</ol>
-<h4 id="积性函数的性质："><a href="#积性函数的性质：" class="headerlink" title="积性函数的性质："></a>积性函数的性质：</h4><ol>
-<li>$n=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$,则$f(n)=f(p_1^{a_1})f(p_2^{a_2})…f(p_n^{a_n})$。</li>
-<li>积性函数的狄利克雷卷积也是积性函数。</li>
-</ol>
-<h3 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h3><p>欧拉函数$\varphi (n)$是小于或等于n的正整数中与n互质的数的数目。<br>利用到了以下性质：<br>$$\varphi(n^m)=n^{m-1}\varphi(n) $$</p>
-<h3 id="推演"><a href="#推演" class="headerlink" title="推演"></a>推演</h3><p>直观地，对于n=6，我们有：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">$i$</th>
-<th style="text-align:left">$gcd(i,n)$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">1</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">2</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">3</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left">2</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left">1</td>
-</tr>
-<tr>
-<td style="text-align:left">6</td>
-<td style="text-align:left">6</td>
-</tr>
-</tbody>
-</table>
-<p>可以按照$gcd(i,n)$将结果分为几个部分，如$gcd(i,n)=1$时，这部分的和即为$\varphi(n)$。<br>对于$gcd(i,n)=k$的部分，和为$\varphi(n/k)$。<br>所以有<br>$${\sum<em>{1\leq i\leq n}gcd(i,n)}={\sum</em>{k\vert n} k\varphi(\frac{n}{k})}$$</p>
-<p>令${h(n)={\sum<em>{k\vert n} k\varphi(\frac{n}{k})}}$，可以发现这是一个积性函数。这是《具体数学》习题3.44的一个例子。<br>习题3.44要求证明当f和g都是积性函数的时候，$h(n)=\sum</em>{k\vert n} f(k)g(\frac{n}{k})$也是积性函数。这里令$f(n)=n$,$g(n)=\varphi(n)$即可。<br>网上很多这道题的题解直接说“积性函数的和也是积性函数”，这是错误的。<br>现在令$n=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$,则$h(n)=h(p_1^{a_1})h(p_2^{a_2})…h(p_n^{a<em>n})$。<br>接下来研究的是$h(p^{a})$的值。<br>$$\begin{align*}<br>h(p^{a})&amp;=\sum</em>{k\vert p^a}k\varphi(\frac{p^a}{k})\<br>&amp;=\sum<em>{j=0}^{a}p^j \varphi({p^{a-j}})\<br>&amp;=p^a + \sum</em>{j=0}^{a-1}p^j p^{a-j-1}(p-1) \<br>&amp;=p^a + ap^{a-1}(p-1)<br>\end{align*}$$<br>得到了一个只与p和a有关的式子。所以分解质因数后，根据上式计算即可。<br>注意，在化简的过程中，要仔细考虑$j=a$的情况。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    ll n;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n)) &#123;</div><div class="line">        ll ans = n;</div><div class="line">        <span class="keyword">for</span> (ll i = <span class="number">2</span>; i * i &lt;= n; ++i) &#123;</div><div class="line">            <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                    n /= i;</div><div class="line">                    k++;</div><div class="line">                &#125;</div><div class="line">                ans += ans * k * (i - <span class="number">1</span>) /i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (n != <span class="number">1</span>) &#123;</div><div class="line">            ans = ans * (n * <span class="number">2</span> - <span class="number">1</span>)/n;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+<p><a href="http://poj.org/problem?id=2480">稳定的传送门</a></p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/06/12/POJ2480/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -514,27 +469,14 @@
 
       
         
-          
-            <a id="more"></a>
-<p><img src="http://gazettereview.com/wp-content/uploads/2016/02/Camping1.jpg" alt="picture1"></p>
-<p><strong>来一次真正的户外露营，烧烤之后去爬山，去看南京的万家灯火，一览众山小！<br>甚至还有露天电影，露天KTV！<br>以及无限量的烧烤食材和丰富多彩的活动！</strong></p>
-<h1 id="计科一班春季特别活动——露营"><a href="#计科一班春季特别活动——露营" class="headerlink" title="计科一班春季特别活动——露营"></a>计科一班春季特别活动——露营</h1><p><strong>活动时间</strong>：<code>3月17日(周五)下午</code>至<code>3月18日早上</code><br><strong>活动地点</strong>：紫金山体育公园露营基地、民国体育场、灵谷寺<br><strong>面向对象</strong>：计科一班成员,以及成员亲友。<br><strong>活动承办方</strong>：撕扇子（成立于南理工孵化园）</p>
-<p>（以下内容摘自微信公众号：撕扇子）<br>原推送地址（有图！）：请<a href="http://url.cn/45lNm2T" target="_blank" rel="external">戳这里</a></p>
-<h2 id="活动流程"><a href="#活动流程" class="headerlink" title="活动流程"></a>活动流程</h2><h3 id="16-00"><a href="#16-00" class="headerlink" title="16:00"></a>16:00</h3><p>来到营地，首先要把自己的小窝给搭建起来，长那么大相信大家都是第一次过来体验露营，现场会有专门的教练教大家如何搭帐篷。<br><a href="http://mmbiz.qpic.cn/mmbiz_jpg/hsmzw5IdQ8ZS3rgTVjib9ugVx66dl97XcCDO9OscCyj7EVfdoOhoVBpZxNZHx7IRib0ro2fGRE9DSv6myuHlia3bA/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1" target="_blank" rel="external">图</a><br><strong>帐篷尺寸</strong><br><strong>超级豪华大帐篷</strong>，可容纳20人，嗨通宵，需提前预定（数量有限）<br><strong>好基友四人帐</strong>，可掼蛋，谈谈人生，聊聊理想<br><strong>激情双人帐</strong>，隔音不太好，你懂的！</p>
-<h3 id="17-00"><a href="#17-00" class="headerlink" title="17:00"></a>17:00</h3><p>自由活动时间，放风筝，撕名牌（需要提前预定），狼人杀……</p>
-<h3 id="18-00"><a href="#18-00" class="headerlink" title="18:00"></a>18:00</h3><p>美美的搭建完小窝，下面就是我们的晚餐时间了，烧烤，自己动手BBQ，展现你手艺的时候到了，尤其是在女生面前哦！各种肉类无限量的提供，大胃王有福了！</p>
-<h3 id="20-00"><a href="#20-00" class="headerlink" title="20:00"></a>20:00</h3><p><strong>自助晚会</strong><br>来认识一下新的同学吧！</p>
-<p><strong>夜访灵谷寺</strong><br>（其实并没有萤火虫啦，不过夜访灵谷寺听着就很有趣！）<br><img src="http://www.js.chinanews.com/news/2015/0717/U171P5T2D125906F6DT20150717170338.jpg" alt="linggusi"><br>图片来源见水印</p>
-<p><strong>夜登紫金山</strong><br>紫金山海拔448.9米，最高处可以俯瞰全城。虽无法举手摘星辰一览众山小，但当冷风拂面寒气袭人你可知自己确在高处。在南京如果没有深夜登过紫金山，总归是遗憾的，因为你看到的金陵城是片面的。荧光夜登，满足你的一切幻想。</p>
-<h3 id="24-00"><a href="#24-00" class="headerlink" title="24:00"></a>24:00</h3><p>已到深夜，我们熄灯归帐，聊聊天，看看星星，找那一棵传说中的树</p>
-<h2 id="活动费用"><a href="#活动费用" class="headerlink" title="活动费用"></a>活动费用</h2><p>价格：95元<br>包含：帐篷，睡袋（每人一个），防潮垫，露营灯，运输设备。<br>烧烤器材，桌子，油，调料，餐盘，筷子，杯子，饮料，矿泉水，露天ktv，夜登紫金山，夜访灵谷寺，专业领队守夜<br>食材:五花肉、里脊、培根、骨肉相连，烤肠，澳洲大肉串，奶香馒头，豆腐串（以上无限量供应），时令蔬菜（有限）等</p>
-<p><em>请在周四将钱转给团支书，具体转账方法会在通知群发布。</em></p>
-<h2 id="交通方案"><a href="#交通方案" class="headerlink" title="交通方案"></a>交通方案</h2><p><strong>公交</strong>:202至灵谷寺公园站下（底站）不堵车10分钟就到啦<br>友情提醒：202公交进紫金山18:30截止<br><strong>地铁</strong>：地铁二号线至钟灵街一号口下,导航步行至富润钟山</p>
-<h2 id="温馨提示"><a href="#温馨提示" class="headerlink" title="温馨提示"></a>温馨提示</h2><p>建议16：00左右出发，准时到场；<br>请避免穿短裙、短裤等；<br>夜里温度较低，记得带件薄外套；<br>活动方提供帐篷灯，押金10元每个，请携带充电宝。</p>
-<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p>计科一班：沈思远 15951827036  张雅楠 18805157037<br>露营负责人：李庆飞学长 18205098695</p>
-<p>第一张图图片来源：gazettereview.com<br>（仅供参考)</p>
-
-          
+          <p><strong>来一次真正的户外露营，烧烤之后去爬山，去看南京的万家灯火，一览众山小！<br>甚至还有露天电影，露天KTV！<br>以及无限量的烧烤食材和丰富多彩的活动！</strong><br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/09/camping/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

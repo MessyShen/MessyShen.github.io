@@ -238,6 +238,198 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/POJ2480/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Messy Shen">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Messy">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Messy" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/12/POJ2480/" itemprop="url">
+                  POJ2480：积性函数的运用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-12T16:55:06+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/06/12/POJ2480/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/12/POJ2480/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入n, 输出$\sum_{1\leq i\leq n}gcd(i,n)$。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Input</th>
+<th style="text-align:left">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">15</td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://poj.org/problem?id=2480" target="_blank" rel="external">稳定的传送门</a></p>
+<h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p>对于一个函数$f(n)$,如果$f(1)=1$，且有$$f(ab)=f(a)f(b), a\perp b$$<br>则$f(n)$具有积性。</p>
+<h4 id="常见的积性函数有："><a href="#常见的积性函数有：" class="headerlink" title="常见的积性函数有："></a>常见的积性函数有：</h4><ol>
+<li>欧拉函数$φ(n)$</li>
+<li>莫比乌斯函数$μ(n)$</li>
+<li>$gcd(n,k)$,当k固定</li>
+</ol>
+<h4 id="积性函数的性质："><a href="#积性函数的性质：" class="headerlink" title="积性函数的性质："></a>积性函数的性质：</h4><ol>
+<li>$n=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$,则$f(n)=f(p_1^{a_1})f(p_2^{a_2})…f(p_n^{a_n})$。</li>
+<li>积性函数的狄利克雷卷积也是积性函数。</li>
+</ol>
+<h3 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h3><p>欧拉函数$\varphi (n)$是小于或等于n的正整数中与n互质的数的数目。<br>利用到了以下性质：<br>$$\varphi(n^m)=n^{m-1}\varphi(n) $$</p>
+<h3 id="推演"><a href="#推演" class="headerlink" title="推演"></a>推演</h3><p>直观地，对于n=6，我们有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">$i$</th>
+<th style="text-align:left">$gcd(i,n)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">6</td>
+</tr>
+</tbody>
+</table>
+<p>可以按照$gcd(i,n)$将结果分为几个部分，如$gcd(i,n)=1$时，这部分的和即为$\varphi(n)$。<br>对于$gcd(i,n)=k$的部分，和为$\varphi(n/k)$。<br>所以有<br>$${\sum<em>{1\leq i\leq n}gcd(i,n)}={\sum</em>{k\vert n} k\varphi(\frac{n}{k})}$$</p>
+<p>令${h(n)={\sum<em>{k\vert n} k\varphi(\frac{n}{k})}}$，可以发现这是一个积性函数。这是《具体数学》习题3.44的一个例子。<br>习题3.44要求证明当f和g都是积性函数的时候，$h(n)=\sum</em>{k\vert n} f(k)g(\frac{n}{k})$也是积性函数。这里令$f(n)=n$,$g(n)=\varphi(n)$即可。<br>网上很多这道题的题解直接说“积性函数的和也是积性函数”，这是错误的。<br>现在令$n=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$,则$h(n)=h(p_1^{a_1})h(p_2^{a_2})…h(p_n^{a<em>n})$。<br>接下来研究的是$h(p^{a})$的值。<br>$$\begin{align*}<br>h(p^{a})&amp;=\sum</em>{k\vert p^a}k\varphi(\frac{p^a}{k})\<br>&amp;=\sum<em>{j=0}^{a}p^j \varphi({p^{a-j}})\<br>&amp;=p^a + \sum</em>{j=0}^{a-1}p^j p^{a-j-1}(p-1) \<br>&amp;=p^a + ap^{a-1}(p-1)<br>\end{align*}$$<br>得到了一个只与p和a有关的式子。所以分解质因数后，根据上式计算即可。<br>注意，在化简的过程中，要仔细考虑$j=a$的情况。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    ll n;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n)) &#123;</div><div class="line">        ll ans = n;</div><div class="line">        <span class="keyword">for</span> (ll i = <span class="number">2</span>; i * i &lt;= n; ++i) &#123;</div><div class="line">            <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                    n /= i;</div><div class="line">                    k++;</div><div class="line">                &#125;</div><div class="line">                ans += ans * k * (i - <span class="number">1</span>) /i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (n != <span class="number">1</span>) &#123;</div><div class="line">            ans = ans * (n * <span class="number">2</span> - <span class="number">1</span>)/n;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/camping/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1428,168 +1620,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/11/计算几何：半平面交/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Messy Shen">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Messy">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Messy" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/11/计算几何：半平面交/" itemprop="url">
-                  计算几何：半平面交
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-11T09:52:19+08:00">
-                2016-07-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算几何/" itemprop="url" rel="index">
-                    <span itemprop="name">计算几何</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/07/11/计算几何：半平面交/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/11/计算几何：半平面交/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p>相当于中学的时候学的线性规划，用n条直线去切割一个平面，每条直线代表一定的限制，最后如果有解就会在中间留下一个凸核：</p>
-<blockquote>
-<ul>
-<li>线性规划</li>
-<li>多边形的核</li>
-</ul>
-</blockquote>
-<p><img src="http://pic002.cnblogs.com/images/2012/239942/2012012021331578.jpg" width="300" height="200" alt="示意图"/></p>
-<hr>
-<h2 id="什么是-半平面交-？"><a href="#什么是-半平面交-？" class="headerlink" title="什么是 半平面交 ？"></a>什么是 <em>半平面交</em> ？</h2><p>典型的例子 ：给你一个多边形，判断多边形内是否存在一个点，从这个点可以看到多边形周围所有的点。</p>
-<h3 id="1-做法："><a href="#1-做法：" class="headerlink" title="1. 做法："></a>1. 做法：</h3><p>多边形的每条边都是一个约束条件，边的顺序为顺时针</p>
-<p>用每条边的直线去切割当前平面：枚举平面点集中的点，假如当前点(p)在核外，</p>
-<p>判断p-1与p+1是不是在核内，如果是，则肯定有交点</p>
-<p>分别把求出的交点加入点集</p>
-<p>不断重复的做下去</p>
-<p>最后点集中的点就是要求的的可行解<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/11/计算几何：半平面交/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1635,7 +1665,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-09T12:47:27.000Z</updated>
+  <updated>2017-06-12T11:35:42.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>POJ2480：积性函数的运用</title>
+    <link href="http://yoursite.com/2017/06/12/POJ2480/"/>
+    <id>http://yoursite.com/2017/06/12/POJ2480/</id>
+    <published>2017-06-12T08:55:06.000Z</published>
+    <updated>2017-06-12T11:35:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>输入n, 输出$\sum_{1\leq i\leq n}gcd(i,n)$。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Input</th>
+<th style="text-align:left">Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">15</td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://poj.org/problem?id=2480" target="_blank" rel="external">稳定的传送门</a></p>
+<h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p>对于一个函数$f(n)$,如果$f(1)=1$，且有$$f(ab)=f(a)f(b), a\perp b$$<br>则$f(n)$具有积性。</p>
+<h4 id="常见的积性函数有："><a href="#常见的积性函数有：" class="headerlink" title="常见的积性函数有："></a>常见的积性函数有：</h4><ol>
+<li>欧拉函数$φ(n)$</li>
+<li>莫比乌斯函数$μ(n)$</li>
+<li>$gcd(n,k)$,当k固定</li>
+</ol>
+<h4 id="积性函数的性质："><a href="#积性函数的性质：" class="headerlink" title="积性函数的性质："></a>积性函数的性质：</h4><ol>
+<li>$n=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$,则$f(n)=f(p_1^{a_1})f(p_2^{a_2})…f(p_n^{a_n})$。</li>
+<li>积性函数的狄利克雷卷积也是积性函数。</li>
+</ol>
+<h3 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h3><p>欧拉函数$\varphi (n)$是小于或等于n的正整数中与n互质的数的数目。<br>利用到了以下性质：<br>$$\varphi(n^m)=n^{m-1}\varphi(n) $$</p>
+<h3 id="推演"><a href="#推演" class="headerlink" title="推演"></a>推演</h3><p>直观地，对于n=6，我们有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">$i$</th>
+<th style="text-align:left">$gcd(i,n)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">6</td>
+</tr>
+</tbody>
+</table>
+<p>可以按照$gcd(i,n)$将结果分为几个部分，如$gcd(i,n)=1$时，这部分的和即为$\varphi(n)$。<br>对于$gcd(i,n)=k$的部分，和为$\varphi(n/k)$。<br>所以有<br>$${\sum<em>{1\leq i\leq n}gcd(i,n)}={\sum</em>{k\vert n} k\varphi(\frac{n}{k})}$$</p>
+<p>令${h(n)={\sum<em>{k\vert n} k\varphi(\frac{n}{k})}}$，可以发现这是一个积性函数。这是《具体数学》习题3.44的一个例子。<br>习题3.44要求证明当f和g都是积性函数的时候，$h(n)=\sum</em>{k\vert n} f(k)g(\frac{n}{k})$也是积性函数。这里令$f(n)=n$,$g(n)=\varphi(n)$即可。<br>网上很多这道题的题解直接说“积性函数的和也是积性函数”，这是错误的。<br>现在令$n=p_1^{a_1}p_2^{a_2}…p_n^{a_n}$,则$h(n)=h(p_1^{a_1})h(p_2^{a_2})…h(p_n^{a<em>n})$。<br>接下来研究的是$h(p^{a})$的值。<br>$$\begin{align*}<br>h(p^{a})&amp;=\sum</em>{k\vert p^a}k\varphi(\frac{p^a}{k})\<br>&amp;=\sum<em>{j=0}^{a}p^j \varphi({p^{a-j}})\<br>&amp;=p^a + \sum</em>{j=0}^{a-1}p^j p^{a-j-1}(p-1) \<br>&amp;=p^a + ap^{a-1}(p-1)<br>\end{align*}$$<br>得到了一个只与p和a有关的式子。所以分解质因数后，根据上式计算即可。<br>注意，在化简的过程中，要仔细考虑$j=a$的情况。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    ll n;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n)) &#123;</div><div class="line">        ll ans = n;</div><div class="line">        <span class="keyword">for</span> (ll i = <span class="number">2</span>; i * i &lt;= n; ++i) &#123;</div><div class="line">            <span class="keyword">if</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span> (n % i == <span class="number">0</span>) &#123;</div><div class="line">                    n /= i;</div><div class="line">                    k++;</div><div class="line">                &#125;</div><div class="line">                ans += ans * k * (i - <span class="number">1</span>) /i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (n != <span class="number">1</span>) &#123;</div><div class="line">            ans = ans * (n * <span class="number">2</span> - <span class="number">1</span>)/n;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;题意&quot;&gt;&lt;a href=&quot;#题意&quot; class=&quot;headerlink&quot; title=&quot;题意&quot;&gt;&lt;/a&gt;题意&lt;/h3&gt;&lt;p&gt;输入n, 输出$\sum_{1\leq i\leq n}gcd(i,n)$。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th st
+    
+    </summary>
+    
+    
+      <category term="组合数学" scheme="http://yoursite.com/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>班级活动：一起去露营吧！</title>

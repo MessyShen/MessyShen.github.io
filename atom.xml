@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-12T11:39:58.000Z</updated>
+  <updated>2017-06-25T13:07:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>莫比乌斯反演</title>
+    <link href="http://yoursite.com/2017/06/23/mobius/"/>
+    <id>http://yoursite.com/2017/06/23/mobius/</id>
+    <published>2017-06-23T13:53:37.000Z</published>
+    <updated>2017-06-25T13:07:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Mobius-反演"><a href="#Mobius-反演" class="headerlink" title="Möbius 反演"></a>Möbius 反演</h1><p>（读这篇文章前，建议先使用容斥原理解决POJ3904）</p>
+<p>现在假设我们要得到一种函数$\mu(d)$，这种函数具有以下性质：</p>
+
+$$
+\begin{equation}f(n)= \sum_{d|n} \mu(d) = \begin{cases} 1, & n = 1 \\ 0, & n > 1 \end{cases} \end{equation}
+$$
+例如
+$$
+\begin{align*}
+f(1)&=\mu(1)=1\\
+f(2)&=\mu(1)+\mu(2)=0\\
+f(3)&=\mu(1)+\mu(3)=0\\
+f(6)&=\mu(1)+\mu(2)+\mu(3)+\mu(6) =0\\
+\end{align*}
+$$
+我们可以得到这个函数的前12个值：
+
+| m        | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    | 10   | 11   | 12   |
+| -------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| $\mu(m)$ | 1    | -1   | -1   | 0    | -1   | 1    | -1   | 0    | 0    | 1    | -1   | 0    |
+
+Richard Dedekind 和 Joseph Liouville 发现了一个反演定理：
+
+
+$$
+F(n)=\sum _{d|n}f(d)\Longleftrightarrow f(n)=\sum _{d|n}\mu(d)F(\frac{n}{d})
+$$
+莫比乌斯函数：
+$$
+\mu(n) = \begin{cases} 1, &n=1 \\ (-1)^k, & {n=p_1p_2...p_k, p_i互不相同} \\ 0, & \text{其它情况} \end{cases}
+$$
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Mobius-反演&quot;&gt;&lt;a href=&quot;#Mobius-反演&quot; class=&quot;headerlink&quot; title=&quot;Möbius 反演&quot;&gt;&lt;/a&gt;Möbius 反演&lt;/h1&gt;&lt;p&gt;（读这篇文章前，建议先使用容斥原理解决POJ3904）&lt;/p&gt;
+&lt;p&gt;现在假设我们要
+    
+    </summary>
+    
+    
+      <category term="组合数学" scheme="http://yoursite.com/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>容斥原理</title>
+    <link href="http://yoursite.com/2017/06/13/inclusion-exclusion/"/>
+    <id>http://yoursite.com/2017/06/13/inclusion-exclusion/</id>
+    <published>2017-06-13T02:52:30.000Z</published>
+    <updated>2017-06-25T13:09:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>POJ3904 &amp; more</p>
+<a id="more"></a>
+
+
+## 初步理解
+
+![simple_pic](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Inclusion-exclusion.svg/640px-Inclusion-exclusion.svg.png?1497322412305)
+
+参见上图，集合$A$,$B$,$C$都是有限集，比如A是一个班里会跳舞的人的集合，B是一个班里会唱歌的人的集合，C是一个班里搞ACM的人的集合，并且已知这些人的数量，以及既会xx又会xx的人的数量，求会三样中至少一样的人的数量，显然
+
+$$|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|A\cap C|-|B\cap C|+|A\cap B\cap C|$$
+
+## 公式化
+$$
+{\displaystyle {\begin{aligned}\left|\bigcup _{i=1}^{n}A_{i}\right|={}&\sum _{i=1}^{n}|A_{i}|-\sum _{1\leq i]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;POJ3904 &amp;amp; more&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="组合数学" scheme="http://yoursite.com/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>POJ2480：积性函数的运用</title>

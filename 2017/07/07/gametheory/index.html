@@ -1,0 +1,749 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="博弈论," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Messy" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="POJ 2348 威佐夫博弈题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。
+题解：
+假设m为较大数，令$m=kn+b,b=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&amp;gt;=2$时，$(n,m)$为先手必胜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博弈论二日游">
+<meta property="og:url" content="http://yoursite.com/2017/07/07/gametheory/index.html">
+<meta property="og:site_name" content="Messy">
+<meta property="og:description" content="POJ 2348 威佐夫博弈题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。
+题解：
+假设m为较大数，令$m=kn+b,b=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&amp;gt;=2$时，$(n,m)$为先手必胜">
+<meta property="og:updated_time" content="2017-07-07T13:50:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博弈论二日游">
+<meta name="twitter:description" content="POJ 2348 威佐夫博弈题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。
+题解：
+假设m为较大数，令$m=kn+b,b=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&amp;gt;=2$时，$(n,m)$为先手必胜">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/07/gametheory/"/>
+
+
+
+
+
+  <title> 博弈论二日游 | Messy </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Messy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gametheory/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Messy Shen">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Messy">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Messy" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                博弈论二日游
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-07T21:49:24+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                  <a href="/2017/07/07/gametheory/#comments" itemprop="discussionUrl">
+                    <span class="post-comments-count hc-comment-count" data-xid="2017/07/07/gametheory/" itemprop="commentsCount"></span>
+                  </a>
+                </span>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="POJ-2348-威佐夫博弈"><a href="#POJ-2348-威佐夫博弈" class="headerlink" title="POJ 2348 威佐夫博弈"></a>POJ 2348 威佐夫博弈</h2><p>题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。</p>
+<p>题解：</p>
+<p>假设m为较大数，令$m=kn+b,b<n$。对于一个状态$(n, m)$，可以转移的状态有：$(n,b),(n,n+b),…,(n,(k-1)+b)$。如果$(n,b)$是一个先手必败态，那么$(n,="" n+b)$一定是先手必胜态，因为它可以转移到必败态；如果$(n,b)$是一个先手必胜态，那么$(n,="" n+b)$一定是先手必败态，因为它只能转移到那个先手必胜态。当$k="">=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&gt;=2$时，$(n,m)$为先手必胜态。</n$。对于一个状态$(n,></p>
+<p>所以我们只要考虑$k=1$的情况，这种情况只有一个状态可以转移，并且转移后胜负状态必然改变。所以我们可以一直进行这个操作，直到出现$k&gt;=2$的情况，原状态的胜负取决于转移到这个状态需要的次数的奇偶。</p>
+<p>例如对于状态$(4,7)$，我们暂时无法判断其状态，但是它只能转移到$(3,4)$，$(3,4)$又只能转移到$(1,3)$，根据前面的推理，$(1,3)$是一个先手必胜态，故$(3,4)$为先手必败态，$(4,7)$先手必胜。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(ll a, ll b)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (a &gt; b) swap(a, b);</div><div class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (b &gt;= a * <span class="number">2</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> !check(a, b - a);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    ll n, m;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m) &#123;</div><div class="line">        <span class="keyword">if</span> (n + m == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        ll g = __gcd(n, m);</div><div class="line">        n /= g;</div><div class="line">        m /= g;</div><div class="line">        <span class="keyword">if</span> (check(n, m)) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Stan wins"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Ollie wins"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这题还有一个神奇的结论：当两数之比大于$\frac{\sqrt{5}+1}{2}$（黄金比例）时，先手必胜，否则先手必败。</p>
+
+
+这个结论可以这么理解：对于状态$(n_1,m_1)$，$m_1=p_1n_1,1<p<2$，转移到$(n_2,m_2):(m_1-n_1,n_1)$，$p_2(m_1-n_1)=n_1$，可以证明当$p_1>\frac{\sqrt{5}+1}{2}$时，$p_2$小于这个数。
+
+
+<h2 id="阶梯博弈"><a href="#阶梯博弈" class="headerlink" title="阶梯博弈"></a>阶梯博弈</h2><p>阶梯博弈的模型是这样的：在从低到高标号为1-N的阶梯上，每级阶梯都放有一定数量的石头，双方轮流进行的操作是<strong>选取任意一级阶梯i，取i上任意数量（不为0）的石子，放到阶梯i-1上</strong>，最后不能进行这个操作的判输。阶梯1上的石子可以放到地上（可视为阶梯0）。</p>
+<p>将所有阶梯分为两部分：奇数标号的阶梯和偶数标号的阶梯。如果把偶数阶梯当做一个容器，限制双方只取奇数阶梯上的石头，那么这个问题就是一个Nim博弈问题。那如果我取奇数阶梯i，对方取了偶数阶梯j上的k个石子该怎么办呢？我们可以猥琐地模仿对方的走法，取j-1上的k个石子放到阶梯j-2上，那么再轮到对面取的时候，局面和上一次相同。所以这个问题就完全转化为了Nim博弈，石子数是阶梯博弈上奇数级阶梯上的石子数。为什么是奇数阶梯而不是偶数阶梯？因为取偶数阶梯不一定会有j-2这个阶梯（当j=1时），并且最后的胜负状态也不一样。</p>
+<h3 id="POJ-1704"><a href="#POJ-1704" class="headerlink" title="POJ 1704"></a>POJ 1704</h3><p>这题可以很简单的转化成阶梯博弈的模型。把两个棋子之间的空格数视为阶梯上的石子数。阶梯1应是最后两个棋子之间的空格数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a[<span class="number">10010</span>];</div><div class="line"><span class="keyword">int</span> b[<span class="number">10010</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; T;</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        <span class="keyword">int</span> n;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">        a[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">            <span class="built_in">cin</span> &gt;&gt; a[i];</div><div class="line">        &#125;</div><div class="line">        n++;</div><div class="line">        sort(a, a + n);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">            b[i<span class="number">-1</span>] = a[i] - a[i<span class="number">-1</span>] - <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = n<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i -= <span class="number">2</span>) &#123;</div><div class="line">            ans ^= b[i];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (ans) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Georgia will win"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Bob will win"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="HDU-3389"><a href="#HDU-3389" class="headerlink" title="HDU 3389"></a>HDU 3389</h3><p>编号1-N的箱子，给出每个箱子里的卡片数量。双方轮流进行的操作是：在箱子A中取若干卡片（不为0）放入B中，满足$B&lt;A, (A+B) mod 2=1, (A+B)mod 3=0$。不能取则判输。</p>
+<p>首先枚举前几个编号的箱子能移动到哪些位置。发现如下规律：</p>
+<ul>
+<li>1，3，4号箱子不能再移动</li>
+<li>编号模6余数为0，2，5的箱子移动奇数步到1，3，4箱子（我们把这些箱子成为X类）。否则移动偶数步（称为Y类箱子）。</li>
+<li>X类箱子下一步必然移动到Y类箱子，反之亦然。</li>
+</ul>
+<p>利用这个规律，我们可以想出如下的<del>猥琐</del>走法：先手移动X类箱子，如果对方移动了X类箱子的卡片，我们也移动X类箱子；如果对方移动Y类箱子的卡片，我们模仿对方的移动方法，将它移动到的X箱子中相同数量的卡片移动到Y类箱子，这样对方将面临与上次相同的局面。这就是一个阶梯博弈。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; T;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> Cas = <span class="number">1</span>; Cas &lt;= T; ++Cas) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: "</span> , Cas);</div><div class="line">        <span class="keyword">int</span> n, t, p;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">            <span class="built_in">cin</span> &gt;&gt; p;</div><div class="line">            t = i % <span class="number">6</span>;</div><div class="line">            <span class="keyword">if</span> (t == <span class="number">2</span> || t == <span class="number">5</span> || t == <span class="number">0</span>) &#123;</div><div class="line">                ans ^= p;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (ans) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Alice"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Bob"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Anti-SG-POJ-3480"><a href="#Anti-SG-POJ-3480" class="headerlink" title="Anti-SG POJ 3480"></a>Anti-SG POJ 3480</h2><p>Anti-SG指的是最后不能进行合法操作的为胜者的游戏。这道题用到了SJ定理：先手必胜当且仅当满足以下条件之一：</p>
+<ol>
+<li>游戏的 SG 函数不为 0，且游戏中某个单一游戏的 SG 函数大于 1。</li>
+<li>游戏的 SG 函数为 0，且游戏中没有单一游戏的 SG 函数大于 1。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> m, t;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; t;</div><div class="line">    <span class="keyword">while</span> (t--) &#123;</div><div class="line">        <span class="keyword">int</span> n, x;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">        m = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            <span class="built_in">cin</span> &gt;&gt; x;</div><div class="line">            ans ^= x;</div><div class="line">            m = max(m, x);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (m &lt;= <span class="number">1</span> &amp;&amp; ans == <span class="number">0</span>) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"John"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (m &gt; <span class="number">1</span> &amp;&amp; ans) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"John"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Brother"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Every-SG"><a href="#Every-SG" class="headerlink" title="Every-SG"></a>Every-SG</h2><p>Every-SG 游戏规定，对于还没有结束的单一游戏，游戏者必须对该游戏进行一步决策；其余和普通SG相同。</p>
+<p>我们的方案是，让必胜的单一游戏尽可能长地玩下去，让必败的游戏尽可能短地玩下去。所以这是一个涉及到长短的游戏，需要记录每个状态的step值。下列公式中，u是v的后继。<br>$$<br>step(v)=\left{<br>\begin{aligned}<br>0 &amp; , &amp; end \<br>max(step(u))+1&amp; ,&amp;  SG(v)&gt;0,SG(u)=0 \<br>min(step(u))+1 &amp; , &amp; SG(v)=0<br>\end{aligned}<br>\right.<br>$$<br>对于整个局面来说，<strong>先手必胜当且仅当所有的单一游戏步数最大的为奇数</strong>（别的单一游戏先于它结束）。</p>
+<h3 id="HDU-3595"><a href="#HDU-3595" class="headerlink" title="HDU 3595"></a>HDU 3595</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> sg[MAXN][MAXN], step[MAXN][MAXN];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">initSG</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (x &gt; y) swap(x, y);</div><div class="line">    <span class="keyword">if</span> (sg[x][y] != <span class="number">-1</span>) <span class="keyword">return</span> sg[x][y];</div><div class="line">    <span class="keyword">if</span> (x == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> step[x][y] = sg[x][y] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> tx = y % x;</div><div class="line">    <span class="keyword">int</span> ty = x;</div><div class="line">    <span class="keyword">int</span> flag = initSG(tx, ty);</div><div class="line">    step[x][y] = step[tx][ty] + <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (y / x == <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">return</span> sg[x][y] = flag ^ <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">if</span> (flag) step[x][y]++;</div><div class="line">        <span class="keyword">return</span> sg[x][y] = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(sg, <span class="number">-1</span>, <span class="keyword">sizeof</span>(sg));</div><div class="line">    <span class="built_in">memset</span>(step, <span class="number">0</span>, <span class="keyword">sizeof</span>(step));</div><div class="line">    <span class="keyword">int</span> n, ans, x, y;</div><div class="line">    <span class="keyword">while</span> (~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)) &#123;</div><div class="line">        ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</div><div class="line">            <span class="keyword">if</span> (x &gt; y) swap(x,y);</div><div class="line">            initSG(x, y);</div><div class="line">            ans = max(ans, step[x][y]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (ans % <span class="number">2</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">"MM"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"GG"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="翻硬币游戏"><a href="#翻硬币游戏" class="headerlink" title="翻硬币游戏"></a>翻硬币游戏</h2><p>游戏规则：</p>
+<p>N枚硬币排成一排，有的正面朝上，有的反面朝上。从左到右编号为1-N。</p>
+<p>游戏者将要根据某些约束翻硬币，但他所翻硬币中，最右的硬币是由正到反的。不能操作者判输。</p>
+<p>此类游戏的结论：局面的SG值为每个正面朝上的棋子单一存在时的SG值的亦或和。</p>
+<h3 id="HDU-3537"><a href="#HDU-3537" class="headerlink" title="HDU 3537"></a>HDU 3537</h3><p>这题对于单一棋子的SG的确定有着很玄学的推理过程。（打表+找规律+归纳）</p>
+<p>一篇比较好的博客：<a href="http://blog.csdn.net/acm_cxlove/article/details/7854181" target="_blank" rel="external">http://blog.csdn.net/acm_cxlove/article/details/7854181</a></p>
+<p>然而还是看得很头疼。。我的代码就不贴了</p>
+<h2 id="树的删边游戏"><a href="#树的删边游戏" class="headerlink" title="树的删边游戏"></a>树的删边游戏</h2><p>游戏规则：</p>
+<p>给出一个有 N 个点的树，有一个点作为树的根节点。游戏者轮流从树中删去边，删去一条边后，不与根节点相连的部分将被移走。谁无路可走谁输。</p>
+<p>定理：</p>
+<p>叶子节点的SG值为0；中间节点的SG值为它的所有子节点的SG值<strong>加1后</strong>的异或和。</p>
+<p>证明过程很精彩，参见贾志豪论文。</p>
+<h3 id="HDU-3094"><a href="#HDU-3094" class="headerlink" title="HDU 3094"></a>HDU 3094</h3><p>就是这样一个删边游戏。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[MAXN];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getSG</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> pre)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); ++i)&#123;</div><div class="line">        <span class="keyword">if</span> (G[u][i] != pre) &#123;</div><div class="line">            ret ^= (getSG(G[u][i], u) + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</p<2$，转移到$(n_2,m_2):(m_1-n_1,n_1)$，$p_2(m_1-n_1)=n_1$，可以证明当$p_1>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/博弈论/" rel="tag"># 博弈论</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/23/mobius/" rel="next" title="莫比乌斯反演">
+                <i class="fa fa-chevron-left"></i> 莫比乌斯反演
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Messy Shen" />
+          <p class="site-author-name" itemprop="name">Messy Shen</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ-2348-威佐夫博弈"><span class="nav-number">1.</span> <span class="nav-text">POJ 2348 威佐夫博弈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阶梯博弈"><span class="nav-number">2.</span> <span class="nav-text">阶梯博弈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POJ-1704"><span class="nav-number">2.1.</span> <span class="nav-text">POJ 1704</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU-3389"><span class="nav-number">2.2.</span> <span class="nav-text">HDU 3389</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anti-SG-POJ-3480"><span class="nav-number">3.</span> <span class="nav-text">Anti-SG POJ 3480</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Every-SG"><span class="nav-number">4.</span> <span class="nav-text">Every-SG</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU-3595"><span class="nav-number">4.1.</span> <span class="nav-text">HDU 3595</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#翻硬币游戏"><span class="nav-number">5.</span> <span class="nav-text">翻硬币游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU-3537"><span class="nav-number">5.1.</span> <span class="nav-text">HDU 3537</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的删边游戏"><span class="nav-number">6.</span> <span class="nav-text">树的删边游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU-3094"><span class="nav-number">6.1.</span> <span class="nav-text">HDU 3094</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Messy Shen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+本站总访问量 <span id="busuanzi_value_site_pv"></span> &nbsp&nbsp&nbsp
+您是第<span id="busuanzi_value_site_uv"></span>个来到的小伙伴
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 92077, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 92077, xid: "2017/07/07/gametheory/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/92077/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+	
+
+
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

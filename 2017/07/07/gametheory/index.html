@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="Messy" type="application/atom+xml" />
 
@@ -86,22 +88,19 @@
 
 
 
-<meta name="description" content="POJ 2348 威佐夫博弈题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。
-题解：
-假设m为较大数，令$m=kn+b,b=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&amp;gt;=2$时，$(n,m)$为先手必胜">
+<meta name="description" content="这是2017-07-05到2017-07-06的做题记录。
+涵盖威佐夫博弈、Nim博弈、SG函数及其各种应用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博弈论二日游">
 <meta property="og:url" content="http://yoursite.com/2017/07/07/gametheory/index.html">
 <meta property="og:site_name" content="Messy">
-<meta property="og:description" content="POJ 2348 威佐夫博弈题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。
-题解：
-假设m为较大数，令$m=kn+b,b=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&amp;gt;=2$时，$(n,m)$为先手必胜">
-<meta property="og:updated_time" content="2017-07-07T13:50:46.000Z">
+<meta property="og:description" content="这是2017-07-05到2017-07-06的做题记录。
+涵盖威佐夫博弈、Nim博弈、SG函数及其各种应用。">
+<meta property="og:updated_time" content="2017-07-07T14:00:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博弈论二日游">
-<meta name="twitter:description" content="POJ 2348 威佐夫博弈题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。
-题解：
-假设m为较大数，令$m=kn+b,b=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&amp;gt;=2$时，$(n,m)$为先手必胜">
+<meta name="twitter:description" content="这是2017-07-05到2017-07-06的做题记录。
+涵盖威佐夫博弈、Nim博弈、SG函数及其各种应用。">
 
 
 
@@ -331,7 +330,10 @@
       
 
       
-        <h2 id="POJ-2348-威佐夫博弈"><a href="#POJ-2348-威佐夫博弈" class="headerlink" title="POJ 2348 威佐夫博弈"></a>POJ 2348 威佐夫博弈</h2><p>题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。</p>
+        <p>这是2017-07-05到2017-07-06的做题记录。</p>
+<p>涵盖威佐夫博弈、Nim博弈、SG函数及其各种应用。</p>
+<a id="more"></a>
+<h2 id="POJ-2348-威佐夫博弈"><a href="#POJ-2348-威佐夫博弈" class="headerlink" title="POJ 2348 威佐夫博弈"></a>POJ 2348 威佐夫博弈</h2><p>题意：两个数n, m。玩家从较大的数中减去较小的数的若干倍，要求减去后得到的数为非负数。双方轮流进行这个操作，直到某一方将其中一个数减到0，该玩家获得胜利。</p>
 <p>题解：</p>
 <p>假设m为较大数，令$m=kn+b,b<n$。对于一个状态$(n, m)$，可以转移的状态有：$(n,b),(n,n+b),…,(n,(k-1)+b)$。如果$(n,b)$是一个先手必败态，那么$(n,="" n+b)$一定是先手必胜态，因为它可以转移到必败态；如果$(n,b)$是一个先手必胜态，那么$(n,="" n+b)$一定是先手必败态，因为它只能转移到那个先手必胜态。当$k="">=2$的时候，$(n,m)$是可以选择进入$(n,b)$或者$(n, n+b)$的，而这两个状态里必然有一个先手必败态，所以$k&gt;=2$时，$(n,m)$为先手必胜态。</n$。对于一个状态$(n,></p>
 <p>所以我们只要考虑$k=1$的情况，这种情况只有一个状态可以转移，并且转移后胜负状态必然改变。所以我们可以一直进行这个操作，直到出现$k&gt;=2$的情况，原状态的胜负取决于转移到这个状态需要的次数的奇偶。</p>

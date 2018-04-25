@@ -1,0 +1,60 @@
+<!doctype html> 
+<html> 
+	<head> 
+		<meta charset="utf-8"> 
+		<style type="text/css"> 
+			.container {
+				height: 300px;
+				background: #eee;
+				margin: 150px auto;
+			}
+			.h1 {
+				font-size: 130px;
+				font-family: Arial, sans-serif;
+				font-weight: bold;
+				text-align: center;
+				color: navy;
+			}
+			.h2 {
+				font-size: 30px;
+				font-family: Arial, sans-serif;
+				font-weight: bold;
+				text-align: center;
+				color: navy;
+			}
+
+		</style> 
+	</head> 
+	<body> 
+		<center>
+		<div id="CountMsg" class="container"> 
+			<br><br>
+			<span class="h2">距离信息安全考试还有</span><br>
+			<span id="t_left" class="h1">00:00:00</span> 
+		</div> 
+		</center>
+		<script type="text/javascript">
+			function pad(num, length) {
+				if((num + "").length >= length) {
+					return num;
+				}
+				return pad("0" + num, length)
+			}
+			function getRTime(){ 
+				var EndTime= new Date('2018/04/27 19:00:00');
+				var NowTime = new Date(); 
+				var t = EndTime.getTime() - NowTime.getTime(); 
+				var leftTime = new Date(t);
+
+				var d=Math.floor(t/1000/60/60/24); 
+				var h=Math.floor(t/1000/60/60%24)+d*24; 
+				var m=Math.floor(t/1000/60%60); 
+				var s=Math.floor(t/1000%60);  
+				document.getElementById("t_left").innerHTML = pad(h,2)+":"+pad(m,2)+":"+pad(s,2);
+			} 
+setInterval(getRTime,1000); 
+		</script> 
+
+		
+	</body> 
+</html>

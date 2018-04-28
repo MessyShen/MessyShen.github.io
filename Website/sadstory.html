@@ -45,8 +45,8 @@
 				var NowTime = new Date(); 
 				var pre = "";
 				var t = EndTime.getTime() - NowTime.getTime();
-				if (EndTime.getTime() - Now.getTime() < 0) {
-					t = Now.getTime() - EndTime.getTime();
+				if (EndTime.getTime() - NowTime.getTime() <0) {
+					t = NowTime.getTime() - EndTime.getTime();
 					pre = "-";
 				} 
 				var leftTime = new Date(t);

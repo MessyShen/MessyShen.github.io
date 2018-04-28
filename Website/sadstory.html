@@ -29,7 +29,7 @@
 		<center>
 		<div id="CountMsg" class="container"> 
 			<br><br>
-			<span class="h2">距离信息安全考试还有</span><br>
+			<span class="h2">距离数字图像处理还有</span><br>
 			<span id="t_left" class="h1">00:00:00</span> 
 		</div> 
 		</center>
@@ -41,16 +41,21 @@
 				return pad("0" + num, length)
 			}
 			function getRTime(){ 
-				var EndTime= new Date('2018/04/27 19:00:00');
+				var EndTime= new Date('2018/05/05 19:00:00');
 				var NowTime = new Date(); 
-				var t = EndTime.getTime() - NowTime.getTime(); 
+				var pre = "";
+				var t = EndTime.getTime() - NowTime.getTime();
+				if (EndTime.getTime() - Now.getTime() < 0) {
+					t = Now.getTime() - EndTime.getTime();
+					pre = "-";
+				} 
 				var leftTime = new Date(t);
 
 				var d=Math.floor(t/1000/60/60/24); 
 				var h=Math.floor(t/1000/60/60%24)+d*24; 
 				var m=Math.floor(t/1000/60%60); 
 				var s=Math.floor(t/1000%60);  
-				document.getElementById("t_left").innerHTML = pad(h,2)+":"+pad(m,2)+":"+pad(s,2);
+				document.getElementById("t_left").innerHTML = pre+pad(h,2)+":"+pad(m,2)+":"+pad(s,2);
 			} 
 setInterval(getRTime,1000); 
 		</script> 
